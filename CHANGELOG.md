@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.0.3
+
+- Corrected the CONTRIBUTING claim that `.trebired/code-discipline/generated/tsconfig.paths.json` is generated on clone. It is committed, as in every Trebired repo, so `tsc` resolves the alias imports with no build step.
+
 ## 1.0.2
 
 - Moved the build output directory into `.trebired/bundler/config.ts` as `build.clientOutDir`. It was a constant in `src/bin/frontend/build.ts`, so the one value a deploy depends on lived in code rather than in the package config that owns build output.
