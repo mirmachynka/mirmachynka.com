@@ -8,7 +8,7 @@
         "@fontsource/bricolage-grotesque": "^5.3.0",
         "@fontsource/inter": "^5.3.0",
         "@fontsource/jetbrains-mono": "^5.3.0",
-        "@trebired/bundler": "^5.12.1",
+        "@trebired/bundler": "^5.13.1",
         "@trebired/frontend": "12.15.0",
         "@trebired/i18n": "^0.6.1",
         "@trebired/logger": "^2.7.1",
@@ -183,7 +183,7 @@
 
     "@socket.io/component-emitter": ["@socket.io/component-emitter@3.1.2", "", {}, "sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA=="],
 
-    "@trebired/bundler": ["@trebired/bundler@5.12.1", "", { "dependencies": { "@package/i18n": "npm:@trebired/i18n@^0.6.1", "@package/logger": "npm:@trebired/logger@^2.7.1", "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.5.1", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.4", "esbuild": "^0.28.1", "sass-embedded": "^1.100.0" }, "bin": { "package-bundler": "dist/cli.js", "trebired-bundler": "dist/cli.js" } }, "sha512-meTe/9VnaI7X+JlHtXb3vGLukcPIrQLUH2wx9/u4QTbF/Jj3jgg6TR54rZ/H9XarwwePRGqiUZbNx3IDSitjtQ=="],
+    "@trebired/bundler": ["@trebired/bundler@5.13.1", "", { "dependencies": { "@package/i18n": "npm:@trebired/i18n@^0.6.1", "@package/logger": "npm:@trebired/logger@^2.7.1", "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.5.1", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.4", "esbuild": "^0.28.1", "sass-embedded": "^1.100.0" }, "bin": { "package-bundler": "dist/cli.js", "trebired-bundler": "dist/cli.js" } }, "sha512-OLvW0ZQjcTH8fVIC7n0KruYSoKxNxM3KDfKHsyEsdIYzlzX4m2x0KdCTSJKMfRHRpQD96rWZGBW3MYbV8xRw/w=="],
 
     "@trebired/code-discipline": ["@trebired/code-discipline@7.2.0", "", { "dependencies": { "@package/logger": "npm:@trebired/logger@^2.7.0", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.3", "typescript": "^6.0.3" }, "bin": { "code-discipline": "dist/cli.js" } }, "sha512-/CWVWimPrf7Gq+A9RZWxCb/BFk/PJxRfbb2v+iQYYdWtCTYcWvXM2Pql/mXdBS3cxB8W/tOS6R7sgGbscNtSbg=="],
 

@@ -28,7 +28,6 @@ import {
 
 type SiteBuildMode = "development" | "production";
 
-const CLIENT_OUT_DIR = "dist";
 const SHELL_LANG = "en";
 
 function ownerName(rootDir: string): string {
@@ -57,7 +56,6 @@ async function resolveSiteBundlerOptions(
 ): Promise<BundlerFrontendAppBundlerConfigOptions> {
   return applyProjectConfigsToFrontendBundlerOptions({
       logger,
-      clientOutDir: CLIENT_OUT_DIR,
       define: siteDefines(rootDir),
       mode,
       rootDir,
@@ -89,8 +87,11 @@ async function writeSiteShell(
   });
 }
 
-async function writeSeoArtifacts(rootDir: string): Promise<void> {
-  const outDir = path.join(rootDir, CLIENT_OUT_DIR);
+async function writeSeoArtifacts(
+  options: BundlerFrontendAppBundlerConfigOptions,
+  rootDir: string,
+): Promise<void> {
+  const outDir = path.join(rootDir, String(options.clientOutDir || "dist"));
   await Bun.write(path.join(outDir, "robots.txt"), siteRobotsTxt());
   await Bun.write(path.join(outDir, "sitemap.xml"), siteSitemap());
 }
@@ -113,7 +114,7 @@ async function buildSite(mode: SiteBuildMode, rootDir: string): Promise<BundlerF
   const options = await resolveSiteBundlerOptions(mode, rootDir);
   const build = await buildFrontendApp({ ...options, target: "client" });
   await writeSiteShell(options, build, rootDir);
-  await writeSeoArtifacts(rootDir);
+  await writeSeoArtifacts(options, rootDir);
   return build;
 }
 
@@ -127,7 +128,6 @@ async function runBuildCommand(argv: string[]): Promise<void> {
 if (import.meta.main) await runBuildCommand(process.argv);
 
 export {
-  CLIENT_OUT_DIR,
   buildSite,
   resolveSiteBundlerOptions,
   shellBuildFromClient,

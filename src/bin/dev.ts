@@ -5,7 +5,6 @@ import { readProductIdentity } from "@trebired/utils";
 
 import { logger } from "./shared/logger";
 import {
-  CLIENT_OUT_DIR,
   buildSite,
   resolveSiteBundlerOptions,
   shellBuildFromClient,
@@ -13,19 +12,18 @@ import {
   writeSiteShell,
 } from "./frontend/build";
 
-const PUBLIC_DIR = "src/frontend/public";
-
 const rootDir = process.cwd();
 const startup = await loadConfig(rootDir);
 const port = resolvePrimaryPort(startup.config) ?? 0;
 const identity = readProductIdentity({ startDir: rootDir });
+const bundlerOptions = await resolveSiteBundlerOptions("development", rootDir);
 
 function serve() {
   return Bun.serve({
       fetch: createBunStaticAssetHandler({
-          clientOutDir: CLIENT_OUT_DIR,
+          clientOutDir: String(bundlerOptions.clientOutDir || "dist"),
           mode: "development",
-          publicDir: PUBLIC_DIR,
+          publicDir: typeof bundlerOptions.publicDir === "string" ? bundlerOptions.publicDir : undefined,
           rootDir,
           spaFallback: "index.html",
       }),
@@ -34,13 +32,13 @@ function serve() {
 }
 
 async function startWatcher() {
-  const options = await resolveSiteBundlerOptions("development", rootDir);
+  const options = bundlerOptions;
   const { client } = createFrontendAppBundlerOptions(options);
   return watch({
       ...client,
       async onRebuilt(result) {
         await writeSiteShell(options, shellBuildFromClient(options, result), rootDir);
-        await writeSeoArtifacts(rootDir);
+        await writeSeoArtifacts(options, rootDir);
         logger.info("watch", `rebuilt :: outputs=${result.outputs.length}`);
       },
   });

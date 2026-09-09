@@ -4,6 +4,11 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.0.2
+
+- Moved the build output directory into `.trebired/bundler/config.ts` as `build.clientOutDir`. It was a constant in `src/bin/frontend/build.ts`, so the one value a deploy depends on lived in code rather than in the package config that owns build output.
+- Moved the dev server's client and public directories onto the same resolved config instead of the `CLIENT_OUT_DIR` and `PUBLIC_DIR` constants in `src/bin/dev.ts`. `PUBLIC_DIR` still named `src/frontend/public`, which no longer exists.
+
 ## 1.0.1
 
 - Changed the build output directory from `dist/client` to `dist`. A frontend-only application has no second build target, so the extra `client` level named a distinction that does not exist and made the deploy path differ from every other Trebired frontend-only site. Deploy `dist`.
