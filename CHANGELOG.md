@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.0.5
+
+- Removed the `frontend ready` boot log from the client entry. It was an application log line duplicated across sites for a milestone the framework does not report, so it told a visitor's console nothing the site owns.
+
 ## 1.0.4
 
 - Added `netlify.toml` declaring `bun run build` and `dist` as the publish directory. The host had no build settings, so it ran no build and published the repository root: every URL returned the host's 404 page while the deploy reported success, and the source tree was served publicly.
