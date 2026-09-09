@@ -1,0 +1,21 @@
+.site-language {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.site-language__trigger {
+  gap: var(--space-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.site-language__menu button {
+  gap: var(--space-xs);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.site-language__menu button.active {
+  background: var(--surface-2);
+  color: var(--ink-color);
+}

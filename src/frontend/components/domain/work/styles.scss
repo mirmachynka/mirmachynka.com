@@ -1,0 +1,13 @@
+.section--work {
+  background: var(--mist-color);
+}
+
+.work {
+  gap: var(--space-xl2);
+}
+
+.work__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}

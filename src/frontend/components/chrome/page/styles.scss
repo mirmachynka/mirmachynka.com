@@ -1,0 +1,113 @@
+$wave-open: "%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='190'%20height='420'%3E";
+$wave-lead: "%3Cpath%20d='M95%200C129.6%2035%20161%2070%20161%20105";
+$wave-mid: "C161%20140%20129.6%20175%2095%20210C60.4%20245%2029%20280%2029%20315";
+$wave-end: "C29%20350%2060.4%20385%2095%20420'";
+$wave-stroke: "%20fill='none'%20stroke='black'%20stroke-width='8'/%3E%3C/svg%3E";
+$wave: "#{$wave-open}#{$wave-lead}#{$wave-mid}#{$wave-end}#{$wave-stroke}";
+
+:root {
+  --site-line-max: 72rem;
+  --site-gutter: 22px;
+  --site-step: clamp(72px, 11vh, 168px);
+  --tbf-selection-bg: var(--selection-bg);
+  --tbf-selection-text: var(--selection-ink);
+  --stripe-gap: 190px;
+  --stripe-wave-height: 420px;
+  --stripe-wave: url("data:image/svg+xml,#{$wave}");
+  --type-hero: clamp(3rem, 8vw, 6.5rem);
+  --type-title: clamp(2rem, 4.6vw, 3.25rem);
+  --type-lead: clamp(1.125rem, 1.7vw, 1.375rem);
+  --type-body: clamp(1rem, 1.1vw, 1.0625rem);
+}
+
+body {
+  overflow-x: clip;
+  background: var(--background-page);
+}
+
+body::after {
+  display: none;
+}
+
+#live_content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+}
+
+.site-main {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding-block: var(--site-step);
+}
+
+.section__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: var(--site-line-max);
+  flex-direction: column;
+  padding-inline: var(--site-gutter);
+}
+
+.section--panel {
+  border-block-start: 1px solid var(--border-surface-1);
+}
+
+.section__title {
+  max-width: 18ch;
+  font-family: var(--tbf-font-family-display), Georgia, sans-serif;
+  font-size: var(--type-title);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--ink-color);
+}
+
+.section__lead {
+  max-width: 46ch;
+  font-size: var(--type-lead);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ink-color);
+}
+
+.section__body {
+  max-width: 56ch;
+  font-size: var(--type-body);
+  line-height: 1.75;
+  color: var(--text-color);
+}
+
+[id] {
+  scroll-margin-top: 96px;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-ink);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --site-gutter: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --site-gutter: 72px;
+  }
+}

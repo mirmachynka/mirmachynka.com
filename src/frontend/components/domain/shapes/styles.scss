@@ -1,0 +1,24 @@
+.shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shapes__item {
+  position: absolute;
+  left: var(--shape-x);
+  top: var(--shape-y);
+  width: var(--shape-size);
+  height: var(--shape-size);
+  overflow: visible;
+  transform: translate(-50%, -50%) rotate(var(--shape-rotate));
+}
+
+@media (max-width: 900px) {
+  .shapes__item {
+    width: calc(var(--shape-size) * 1.15);
+    height: calc(var(--shape-size) * 1.15);
+  }
+}

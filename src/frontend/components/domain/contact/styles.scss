@@ -1,0 +1,41 @@
+.section--contact {
+  background: var(--mist-color);
+}
+
+.contact {
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.contact__email {
+  font-size: var(--type-lead);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink-color);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: opacity var(--tbf-transition-fast) var(--tbf-transition-easing);
+}
+
+.contact__email:hover {
+  opacity: 0.7;
+}
+
+.contact__link {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--text-color-muted);
+  border-radius: 999px;
+  font-size: 20px;
+  color: var(--ink-color);
+  text-decoration: none;
+  transition: opacity var(--tbf-transition-fast) var(--tbf-transition-easing);
+}
+
+.contact__link:hover {
+  opacity: 0.7;
+}
