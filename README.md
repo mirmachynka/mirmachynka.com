@@ -43,7 +43,7 @@ bun i
 bun run dev
 ```
 
-The dev server runs behind the Code Discipline gate, builds the client into `dist/client`, watches `src/frontend`, and serves on port 3000. `bun run dev:app` skips the gate. `bun run build` writes the production client and the prerendered documents into `dist/client`, which is the directory to deploy.
+The dev server runs behind the Code Discipline gate, builds the client into `dist`, watches `src/frontend`, and serves on port 3000. `bun run dev:app` skips the gate. `bun run build` writes the production client and the prerendered documents into `dist`, which is the directory to deploy.
 
 ## Screens
 
@@ -119,7 +119,7 @@ Editing a file that `.trebired/frontend/config.ts` imports through a `#` alias, 
 
 ## Runtime
 
-The build emits an ES module client bundle, two stylesheets, the self hosted font files, the rasterized favicon set, `robots.txt`, `sitemap.xml`, and one prerendered HTML document per locale. Deploy `dist/client` to any static host that resolves a directory to its `index.html`.
+The build emits an ES module client bundle, two stylesheets, the self hosted font files, the rasterized favicon set, `robots.txt`, `sitemap.xml`, and one prerendered HTML document per locale. Deploy `dist` to any static host that resolves a directory to its `index.html`.
 
 Icons resolve from a build-generated static cache, so the page makes no icon requests. The chosen locale is stored in `localStorage` and applied by redirecting to that locale's URL before first paint. A page load progress bar is booted from the client entry and driven by `@trebired/frontend`.
 

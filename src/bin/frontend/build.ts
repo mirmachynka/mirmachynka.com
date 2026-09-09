@@ -28,7 +28,7 @@ import {
 
 type SiteBuildMode = "development" | "production";
 
-const CLIENT_OUT_DIR = "dist/client";
+const CLIENT_OUT_DIR = "dist";
 const SHELL_LANG = "en";
 
 function ownerName(rootDir: string): string {

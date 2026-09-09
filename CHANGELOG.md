@@ -4,6 +4,11 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.0.1
+
+- Changed the build output directory from `dist/client` to `dist`. A frontend-only application has no second build target, so the extra `client` level named a distinction that does not exist and made the deploy path differ from every other Trebired frontend-only site. Deploy `dist`.
+- Removed the `frontend.publicDir` entry from `.trebired/bundler/config.ts`. It still pointed at `src/frontend/public`, which no longer exists.
+
 ## 1.0.0
 
 - Added the site: five sections (opening, work, about, how I work, contact) rendered once per locale and deployed as static files.

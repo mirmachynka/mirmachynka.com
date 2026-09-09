@@ -8,6 +8,6 @@ export default defineConfig({
     },
     frontend: {
       frontendDir: "src/frontend",
-      publicDir: "src/frontend/public",
+      publicDir: false,
     },
 });

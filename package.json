@@ -13,7 +13,7 @@
     }
   },
   "name": "mirmachynka-com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Personal portfolio website of Miroslav Machynka.",
   "type": "module",
   "private": true,
