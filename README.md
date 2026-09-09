@@ -119,7 +119,7 @@ Editing a file that `.trebired/frontend/config.ts` imports through a `#` alias, 
 
 ## Runtime
 
-The build emits an ES module client bundle, two stylesheets, the self hosted font files, the rasterized favicon set, `robots.txt`, `sitemap.xml`, and one prerendered HTML document per locale. Deploy `dist` to any static host that resolves a directory to its `index.html`.
+The build emits an ES module client bundle, two stylesheets, the self hosted font files, the rasterized favicon set, `robots.txt`, `sitemap.xml`, and one prerendered HTML document per locale. Deploy `dist` to any static host that resolves a directory to its `index.html`. `netlify.toml` declares the build command and publish directory for the hosted deploy, so the host needs no build settings of its own.
 
 Icons resolve from a build-generated static cache, so the page makes no icon requests. The chosen locale is stored in `localStorage` and applied by redirecting to that locale's URL before first paint. A page load progress bar is booted from the client entry and driven by `@trebired/frontend`.
 

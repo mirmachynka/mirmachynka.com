@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.0.4
+
+- Added `netlify.toml` declaring `bun run build` and `dist` as the publish directory. The host had no build settings, so it ran no build and published the repository root: every URL returned the host's 404 page while the deploy reported success, and the source tree was served publicly.
+
 ## 1.0.3
 
 - Corrected the CONTRIBUTING claim that `.trebired/code-discipline/generated/tsconfig.paths.json` is generated on clone. It is committed, as in every Trebired repo, so `tsc` resolves the alias imports with no build step.
