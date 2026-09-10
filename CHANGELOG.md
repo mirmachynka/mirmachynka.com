@@ -6,7 +6,7 @@ This project follows semantic versioning once published.
 
 ## 1.1.0
 
-- Switching language no longer reloads or changes the URL. Changing language used to navigate to `/cs`. The language menu now re-renders the page in place, and the saved language is shown before the application bundle runs. Built on `@trebired/frontend` 13.1.1.
+- Switching language no longer reloads or changes the URL. Changing language used to navigate to `/cs`. The language menu now re-renders the page in place, and the saved language is shown before the application bundle runs. Built on `@trebired/frontend` 13.1.2.
 - The `/cs` page remains for search engines only, so both languages stay indexed with `hreflang`. Visitors are never sent there; someone arriving from a search result sees their saved language if they have one.
 
 ## 1.0.5
