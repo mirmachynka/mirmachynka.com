@@ -45,7 +45,7 @@
     "roughjs": "^4.6.6"
   },
   "devDependencies": {
-    "@trebired/code-discipline": "^7.2.0",
+    "@trebired/code-discipline": "^7.2.1",
     "@trebired/configs": "^0.4.0",
     "@types/bun": "^1.4.1",
     "@types/react": "^19.2.18",

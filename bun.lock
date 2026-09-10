@@ -20,7 +20,7 @@
         "roughjs": "^4.6.6",
       },
       "devDependencies": {
-        "@trebired/code-discipline": "^7.2.0",
+        "@trebired/code-discipline": "^7.2.1",
         "@trebired/configs": "^0.4.0",
         "@types/bun": "^1.4.1",
         "@types/react": "^19.2.18",
@@ -185,7 +185,7 @@
 
     "@trebired/bundler": ["@trebired/bundler@5.13.1", "", { "dependencies": { "@package/i18n": "npm:@trebired/i18n@^0.6.1", "@package/logger": "npm:@trebired/logger@^2.7.1", "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.5.1", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.4", "esbuild": "^0.28.1", "sass-embedded": "^1.100.0" }, "bin": { "package-bundler": "dist/cli.js", "trebired-bundler": "dist/cli.js" } }, "sha512-OLvW0ZQjcTH8fVIC7n0KruYSoKxNxM3KDfKHsyEsdIYzlzX4m2x0KdCTSJKMfRHRpQD96rWZGBW3MYbV8xRw/w=="],
 
-    "@trebired/code-discipline": ["@trebired/code-discipline@7.2.0", "", { "dependencies": { "@package/logger": "npm:@trebired/logger@^2.7.0", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.3", "typescript": "^6.0.3" }, "bin": { "code-discipline": "dist/cli.js" } }, "sha512-/CWVWimPrf7Gq+A9RZWxCb/BFk/PJxRfbb2v+iQYYdWtCTYcWvXM2Pql/mXdBS3cxB8W/tOS6R7sgGbscNtSbg=="],
+    "@trebired/code-discipline": ["@trebired/code-discipline@7.2.1", "", { "dependencies": { "@package/logger": "npm:@trebired/logger@^2.7.0", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.3", "typescript": "^6.0.3" }, "bin": { "code-discipline": "dist/cli.js" } }, "sha512-9z7vfEGMKjaUR+Cfvw5pHz/+fAc/k7qWlo5eKePD9lVTRFAmJh34VL8GOIKfJIU8LrT/gimZ0epv99aISla8Kg=="],
 
     "@trebired/configs": ["@trebired/configs@0.4.0", "", {}, "sha512-y4GhZMVZqip2LcGqFzvm+ebVr0smuC1cYrU8uJvPlz9Lx7Qo4CJGRr9A5G+RYamlGA/WbBXjujw7mDZALBtwjQ=="],
 
