@@ -6,8 +6,8 @@ This project follows semantic versioning once published.
 
 ## 1.1.0
 
-- Both languages are served from `/`, and switching language no longer reloads. Czech had its own `/cs` URL and changing language navigated to it. The page is now one prerendered document carrying English as live markup and Czech as an inert template; the saved, cookie or browser language is shown before the application bundle runs, and the language menu re-renders the page in place. Built on `@trebired/frontend` 13.0.0.
-- The `/cs` URL is gone and search engines index the English page.
+- Switching language no longer reloads or changes the URL. Changing language used to navigate to `/cs`. The language menu now re-renders the page in place, and the saved language is shown before the application bundle runs. Built on `@trebired/frontend` 13.1.1.
+- The `/cs` page remains for search engines only, so both languages stay indexed with `hreflang`. Visitors are never sent there; someone arriving from a search result sees their saved language if they have one.
 
 ## 1.0.5
 

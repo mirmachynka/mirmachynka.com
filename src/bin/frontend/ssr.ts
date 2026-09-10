@@ -1,11 +1,9 @@
 import { bundle } from "@trebired/bundler";
-import { createLocaleDocumentBody } from "@trebired/frontend";
 import path from "node:path";
 
 import { logger } from "#f9cklujxctdn";
 import { LANGUAGE_ROUTING } from "#szbf6t6578gp";
 import { allRoutePaths } from "#qc7hh93g4hpq";
-import { siteShellMeta } from "./seo";
 
 const SSR_OUT_DIR = ".ssr";
 const SSR_ENTRY_OUTPUT = `${SSR_OUT_DIR}/src/frontend/ssr/entry.js`;
@@ -37,24 +35,11 @@ async function buildSsrBundle(
   });
 }
 
-function localizedBody(routePath: string, render: (locale: string) => string): string {
-  const locales = LANGUAGE_ROUTING.locales;
-  const meta = locales.map((locale) => {
-      const shell = siteShellMeta(routePath, locale);
-      return [locale, { description: shell.description, title: shell.title }];
-  });
-  return createLocaleDocumentBody({
-      bodies: Object.fromEntries(locales.map((locale) => [locale, render(locale)])),
-      defaultLocale: LANGUAGE_ROUTING.defaultLocale,
-      meta: Object.fromEntries(meta),
-  });
-}
-
 async function renderRouteBodies(
   define: Record<string, string>,
   supportedLanguages: string[],
   rootDir: string,
-): Promise<Record<string, string>> {
+): Promise<Record<string, Record<string, string>>> {
   await buildSsrBundle(define, supportedLanguages, rootDir);
 
   const entryPath = path.resolve(rootDir, SSR_ENTRY_OUTPUT);
@@ -62,9 +47,10 @@ async function renderRouteBodies(
     renderRouteBody: (routePath: string, locale: string) => string;
   };
 
-  const bodies: Record<string, string> = {};
+  const bodies: Record<string, Record<string, string>> = {};
   for (const routePath of allRoutePaths()) {
-    bodies[routePath] = localizedBody(routePath, (locale) => mod.renderRouteBody(routePath, locale));
+    const rendered = LANGUAGE_ROUTING.locales.map((locale) => [locale, mod.renderRouteBody(routePath, locale)]);
+    bodies[routePath] = Object.fromEntries(rendered);
   }
   return bodies;
 }
