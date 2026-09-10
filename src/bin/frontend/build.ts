@@ -11,7 +11,7 @@ import type {
   BundlerFrontendBuildResult,
 } from "@trebired/bundler";
 
-import { createLocaleBootScript, localeShellRoutes } from "@trebired/frontend";
+import { createLocaleBootScript } from "@trebired/frontend";
 import path from "node:path";
 
 import { logger } from "#f9cklujxctdn";
@@ -28,7 +28,7 @@ import {
 
 type SiteBuildMode = "development" | "production";
 
-const SHELL_LANG = "en";
+const SHELL_LANG = LANGUAGE_ROUTING.defaultLocale;
 
 function ownerName(rootDir: string): string {
   const packageJsonPath = findPackageJson(rootDir);
@@ -74,10 +74,10 @@ async function writeSiteShell(
     rootDir,
   );
   const owner = ownerName(rootDir);
-  const routes = localeShellRoutes(allRoutePaths(), LANGUAGE_ROUTING).map((route) => ({
-        body: `${bodies[route.path] || ""}${siteStructuredData(route.sourcePath, rootDir, owner)}`,
-        meta: { ...siteShellMeta(route.sourcePath, route.locale), lang: route.locale },
-        path: route.path,
+  const routes = allRoutePaths().map((routePath) => ({
+        body: `${bodies[routePath] || ""}${siteStructuredData(routePath, rootDir, owner)}`,
+        meta: { ...siteShellMeta(routePath, SHELL_LANG), lang: SHELL_LANG },
+        path: routePath,
   }));
   await buildStaticShell({
       build,

@@ -4,6 +4,11 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.1.0
+
+- Both languages are served from `/`, and switching language no longer reloads. Czech had its own `/cs` URL and changing language navigated to it. The page is now one prerendered document carrying English as live markup and Czech as an inert template; the saved, cookie or browser language is shown before the application bundle runs, and the language menu re-renders the page in place. Built on `@trebired/frontend` 13.0.0.
+- The `/cs` URL is gone and search engines index the English page.
+
 ## 1.0.5
 
 - Removed the `frontend ready` boot log from the client entry. It was an application log line duplicated across sites for a milestone the framework does not report, so it told a visitor's console nothing the site owns.
