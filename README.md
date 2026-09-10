@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/screens/mark.png" alt="mirmachynka.com" width="120">
+<img src="src/brand/favicon.svg" alt="mirmachynka.com" width="120">
 
 **The personal site of Miroslav Machynka: a bilingual, prerendered portfolio covering the work he takes on, how he builds, and a direct contact address.**
 
@@ -22,7 +22,6 @@ mirmachynka.com is a Trebired product, licensed under the MIT License. See [LICE
 
 - [Install](#install)
 - [Quick Start](#quick-start)
-- [Screens](#screens)
 - [Concepts](#concepts)
 - [Configuration](#configuration)
 - [Runtime](#runtime)
@@ -44,20 +43,6 @@ bun run dev
 ```
 
 The dev server runs behind the Code Discipline gate, builds the client into `dist`, watches `src/frontend`, and serves on port 3000. `bun run dev:app` skips the gate. `bun run build` writes the production client and the prerendered documents into `dist`, which is the directory to deploy.
-
-## Screens
-
-English at `/` and Czech at `/cs`, each served as its own prerendered document:
-
-| | |
-| --- | --- |
-| ![Home](docs/screens/home.png) | ![Home in Czech](docs/screens/home-cs.png) |
-
-<div align="center">
-
-<img src="docs/screens/mobile.png" alt="mirmachynka.com on a phone" width="300">
-
-</div>
 
 ## Concepts
 
