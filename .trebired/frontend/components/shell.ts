@@ -9,7 +9,6 @@ export const shell = {
       letterSpacing: "-0.02em",
     },
     gap: "var(--space-sm)",
-    height: "auto",
     maxWidth: "var(--site-line-max)",
     paddingBlock: "var(--space-sm)",
     paddingInline: "var(--site-gutter)",

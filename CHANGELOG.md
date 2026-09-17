@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.3.0
+
+- The header bar is 5rem tall, the height `@trebired/frontend` 13.9.0 fixes for every site. It was as tall as the name inside it. The name keeps its own type size, which still grows with the window.
+
 ## 1.2.1
 
 - Moved to `@trebired/frontend` 13.8.1, which fixes the site header menu toggle at one size. This site has no navigation links and so no toggle; nothing here changes.
