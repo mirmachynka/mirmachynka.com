@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.3.1
+
+- Moved to `@trebired/frontend` 13.11.1, which changes the graph cards this site does not use. The header is unchanged.
+
 ## 1.3.0
 
 - The header bar is 5rem tall, the height `@trebired/frontend` 13.9.0 fixes for every site. It was as tall as the name inside it. The name keeps its own type size, which still grows with the window.
