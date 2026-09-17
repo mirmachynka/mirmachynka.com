@@ -1,4 +1,4 @@
-import { normalizeLocaleRouting } from "@trebired/frontend";
+import { languageName, normalizeLocaleRouting } from "@trebired/frontend";
 
 const SUPPORTED_LANGUAGES = ["en", "cs"] as const;
 
@@ -12,8 +12,8 @@ const LANGUAGE_COUNTRIES: Record<SiteLanguage, string> = {
 };
 
 const LANGUAGE_LABELS: Record<SiteLanguage, string> = {
-  cs: "Čeština",
-  en: "English",
+  cs: languageName("cs"),
+  en: languageName("en"),
 };
 
 const LANGUAGE_ROUTING = normalizeLocaleRouting({
