@@ -49,14 +49,14 @@
       "#8lt90xbwt260": [
         "../../../src/frontend/shared/content.ts"
       ],
-      "#96wb2qa8jbpk": [
-        "../../../src/frontend/components/chrome/header/styles.scss"
-      ],
       "#a38rcf0jfx82": [
         "../../../src/frontend/shared/language/use.ts"
       ],
       "#a6y8rnwh8rgt": [
         "../../../src/frontend/components/chrome/header/view.tsx"
+      ],
+      "#a9ida98cnvs3": [
+        "../../frontend/components/shell.ts"
       ],
       "#as55imemt9te": [
         "../../../src/frontend/pages/home.tsx"

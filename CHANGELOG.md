@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.2.0
+
+- The header comes from `SiteHeader` in `@trebired/frontend` 13.8.0 instead of this repository, with its fixed translucent bar, the name and the language menu described as tokens and props. It has no navigation links, so it still shows no menu toggle and keeps the language menu visible on a phone.
+
 ## 1.1.1
 
 - The language menu takes each language's name from `languageName` in `@trebired/frontend` 13.7.0, which names a language in that language (Čeština, English). The menu read the same before; a language added later is now named correctly without a hand-written label.

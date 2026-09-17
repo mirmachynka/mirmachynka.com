@@ -1,4 +1,5 @@
 import { LiveIslandMount, LocaleProvider } from "@trebired/frontend/react";
+import { siteHeaderRootHtml } from "@trebired/frontend";
 import { buildStaticIconCache, createServerIconRenderer, withIconServerRenderer } from "@trebired/frontend/server";
 import { renderToString } from "react-dom/server";
 import type { ReactElement } from "react";
@@ -22,7 +23,7 @@ function renderRouteBody(path: string, locale: string): string {
         </LiveIslandMount>,
       );
       const footer = localized(<Footer />);
-      return `${header}${content}${footer}`;
+      return `${siteHeaderRootHtml(header)}${content}${footer}`;
   });
 }
 
