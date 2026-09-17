@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 1.2.1
+
+- Moved to `@trebired/frontend` 13.8.1, which fixes the site header menu toggle at one size. This site has no navigation links and so no toggle; nothing here changes.
+
 ## 1.2.0
 
 - The header comes from `SiteHeader` in `@trebired/frontend` 13.8.0 instead of this repository, with its fixed translucent bar, the name and the language menu described as tokens and props. It has no navigation links, so it still shows no menu toggle and keeps the language menu visible on a phone.
