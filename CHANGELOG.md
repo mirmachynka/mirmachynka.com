@@ -4,6 +4,11 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.0.2
+
+- Changed the Trebired logo beside the Trebired story to the colour of the text instead of the logo's own black.
+- Changed the Trebired band to the same structure as contact: the text first, the logo after it, on the right on a wide screen and under the text on a phone.
+
 ## 3.0.1
 
 - Changed the accent from aqua to `#946e93`, the purple the trebired.com landing page leads with, for link underlines, the active header link and focus rings. Buttons are filled with it mixed with 5 % of the text ink, so their white labels stay readable.

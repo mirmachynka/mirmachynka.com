@@ -1,16 +1,20 @@
 import { button as PrimitiveButton, Icon, Title } from "@trebired/frontend/react";
 import type { I18nTranslator } from "@trebired/i18n";
+import type { CSSProperties } from "react";
 
-import { Drawing } from "./../../components/primitives/drawing";
 import { SectionBand } from "./../../components/sections/band";
 import { identity } from "./../../shared/identity";
 import { ORGANIZATION_LOGO } from "./drawings";
+
+const LOGO_STYLE = {
+  "--logo": `url(${ORGANIZATION_LOGO.href})`,
+  aspectRatio: `${ORGANIZATION_LOGO.width} / ${ORGANIZATION_LOGO.height}`,
+} as CSSProperties;
 
 export function FounderBand({ translator }: { translator: I18nTranslator }) {
   return (
     <SectionBand archetype="statement" className="tbfm-founder" id="trebired" weight="major">
     <div className="tbfm-founder__layout">
-    <Drawing className="tbfm-founder__logo" drawing={ORGANIZATION_LOGO} label={identity.organizationName} />
     <div className="tbfm-founder__text tbf-column tbf-gap-md">
     <Title className="tbf-text-xl6" level={2}>{translator("founder.title")}</Title>
     <p>{translator("founder.text")}</p>
@@ -22,6 +26,7 @@ export function FounderBand({ translator }: { translator: I18nTranslator }) {
     </PrimitiveButton>
     </div>
     </div>
+    <span aria-label={identity.organizationName} className="tbfm-founder__logo" role="img" style={LOGO_STYLE} />
     </div>
     </SectionBand>
   );

@@ -67,7 +67,7 @@ The opening, the about section, the working principles and contact each carry a 
 
 ### The Trebired logo
 
-The Trebired band shows the minimal Trebired logo. The build fetches it from `brand/brand.json` in Trebired/meta through the `trebiredLogo` data source in `.trebired/bundler/config.ts`, in its tone for light surfaces, and writes it to `dist/brand/trebired.svg`. The repository keeps no copy; when GitHub cannot be reached, the build uses the copy the last build kept in `dist/data`.
+The Trebired band shows the minimal Trebired logo. The build fetches it from `brand/brand.json` in Trebired/meta through the `trebiredLogo` data source in `.trebired/bundler/config.ts`, in its tone for light surfaces, and writes it to `dist/brand/trebired.svg`. The page draws it as a mask filled with the text colour, so the logo always matches the type beside it instead of keeping its own black. The repository keeps no copy; when GitHub cannot be reached, the build uses the copy the last build kept in `dist/data`.
 
 ### The brand mark
 

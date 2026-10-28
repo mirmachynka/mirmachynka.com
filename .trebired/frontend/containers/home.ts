@@ -64,8 +64,17 @@ const founder: FrontendContainer = {
   parts: {
     layout: { ...SPLIT, style: { ...SPLIT.style, gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)" } },
     logo: {
-      at: { md: { inlineSize: "min(70%, 16rem)", justifySelf: "start", order: "-1" } },
-      style: { ...PICTURE, inlineSize: "min(100%, 36rem)", justifySelf: "center" },
+      at: { md: { inlineSize: "min(70%, 16rem)", justifySelf: "start" } },
+      style: {
+        ...PICTURE,
+        backgroundColor: "currentColor",
+        inlineSize: "min(100%, 36rem)",
+        justifySelf: "center",
+        maskImage: "var(--logo)",
+        maskPosition: "center",
+        maskRepeat: "no-repeat",
+        maskSize: "contain",
+      },
     },
     text: { style: { maxInlineSize: "40rem" } },
   },
