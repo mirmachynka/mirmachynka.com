@@ -12,12 +12,6 @@
 
 ---
 
-This repository owns what is specific to this one site: the copy and its Czech and English translations, the composition of the five sections, the hand-drawn shapes, the brand mark, and the design values in `.trebired/`. The `@trebired/*` packages own everything generic, listed under [Concepts](#trebired-package-ownership): the build, the browser runtime, locale routing, the UI primitives, translation lookup, SEO artifacts, and logging. The operator owns the static host and the DNS record. This repository does not own a server, a database, or any behaviour that is not specific to this site.
-
-The output is static files. There is no backend, no database, no accounts, and no analytics, and the site issues no requests on a visitor's behalf. The only thing a visitor can send is an email they compose in their own mail client.
-
-mirmachynka.com is a Trebired product, licensed under the MIT License. See [LICENSE](LICENSE).
-
 ## Contents
 
 - [Install](#install)
