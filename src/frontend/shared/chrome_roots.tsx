@@ -1,18 +1,18 @@
+import { mountReactRoot } from "@trebired/frontend/react";
 import type { ReactElement, ReactNode } from "react";
 import { useEffect } from "react";
-import { hydrateRoot } from "react-dom/client";
 
 type ChromeRoot = [Element | null, ReactElement];
 
-function AfterCommit(props: { children: ReactNode; onCommit: () => void }) {
+function AfterCommit({ children, onCommit }: { children: ReactNode; onCommit: () => void }) {
   useEffect(() => {
-      props.onCommit();
-    }, [props.onCommit]);
+      onCommit();
+    }, [onCommit]);
 
-  return <>{props.children}</>;
+  return <>{children}</>;
 }
 
-function hydrateChromeRoots(roots: ChromeRoot[]): Promise<void> {
+export function hydrateChromeRoots(roots: ChromeRoot[]): Promise<void> {
   const present = roots.filter((entry): entry is [Element, ReactElement] => entry[0] !== null);
 
   if (present.length === 0) return Promise.resolve();
@@ -26,9 +26,7 @@ function hydrateChromeRoots(roots: ChromeRoot[]): Promise<void> {
       }
 
       for (const [element, node] of present) {
-        hydrateRoot(element, <AfterCommit onCommit={onCommit}>{node}</AfterCommit>);
+        void mountReactRoot(element, <AfterCommit onCommit={onCommit}>{node}</AfterCommit>, { hydrate: true });
       }
   });
 }
-
-export { hydrateChromeRoots };

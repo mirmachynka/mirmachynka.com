@@ -1,63 +1,73 @@
-import { defineConfig } from "@trebired/frontend/config";
+import { defineConfig, siteSocialIconSpecs } from "@trebired/frontend/config";
 
-import { ALL_ICON_SPECS } from "#0ecwvk1k07fy";
 import { components } from "./components";
+import { containers } from "./containers";
+import { language } from "./language";
+import { links } from "./links";
 import { palette } from "./palette";
-import { scales } from "./scales";
 import { systems } from "./systems";
-import { interactions, runtime } from "./theme";
-import { typography } from "./typography";
+import { interactions, runtime, semantics } from "./theme";
+import { breakpoints } from "./typography";
 
 export default defineConfig({
-    forVersion: "13.14.0",
+    forVersion: "29.2.0",
+    containers,
+    links,
     assets: {
-      favicon: "src/brand/favicon.svg",
-      flags: {
-        countries: ["CZ", "GB"],
-        ratio: "3x2",
+      favicon: {
+        default: "src/brand/favicon.svg",
+        light: "src/brand/favicon.svg",
+        dark: "src/brand/favicon.svg",
+      },
+      icons: {
+        mode: "static",
+        specs: [
+          "remixicon:arrow-down-s-line",
+          "remixicon:arrow-right-line",
+          "remixicon:arrow-right-s-line",
+          "remixicon:check-line",
+          "remixicon:close-line",
+          "remixicon:external-link-line",
+          "remixicon:mail-line",
+          "remixicon:translate-2",
+          "remixicon:wheelchair-line",
+          "remixicon:instagram-line",
+          ...siteSocialIconSpecs(["github", "linkedin", "x"]),
+        ],
       },
       fonts: {
         families: {
-          display: {
-            display: "swap",
+          bricolage: {
+            package: "bricolage-grotesque",
             family: "Bricolage Grotesque",
-            fontsource: "bricolage-grotesque",
-            styles: ["normal"],
             subsets: ["latin", "latin-ext"],
-            weights: [400, 600, 700, 800],
+            weights: [700, 800],
           },
-          mono: {
-            display: "swap",
-            family: "JetBrains Mono",
-            fontsource: "jetbrains-mono",
-            styles: ["normal"],
+          plexSans: {
+            package: "ibm-plex-sans",
+            family: "IBM Plex Sans",
             subsets: ["latin", "latin-ext"],
-            weights: [400, 700],
-          },
-          text: {
-            display: "swap",
-            family: "Inter",
-            fontsource: "inter",
-            styles: ["normal"],
-            subsets: ["latin", "latin-ext"],
-            weights: [400, 500, 700],
+            weights: [400, 500, 600, 700],
           },
         },
-        sans: "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
-      },
-      icons: {
-        endpoint: false,
-        mode: "static",
-        packs: ["remixicon"],
-        specs: ALL_ICON_SPECS,
+        sans: '"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif',
       },
     },
-    components: { ...components, typography },
+    components,
+    language,
     design: {
+      breakpoints,
+      glass: { tint: "light" },
+      titles: { fit: { below: "md" } },
       interactions,
       palette,
-      scales,
+      scales: {
+        spacing: { lg: 40, md: 24, sm: 12, xl: 56, xl2: 72, xl3: 96, xs: 8, xs2: 4 },
+        textBody: "lg",
+        textSize: { lg: 20, md: 16, sm: 14, xl: 24, xl2: 32, xl3: 40, xl4: 56, xl5: 72, xl6: 108, xl7: 208, xs: 12 },
+      },
       scrollBehavior: "smooth",
+      semantics,
     },
     runtime,
     systems,

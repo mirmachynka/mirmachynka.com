@@ -1,7 +1,7 @@
 import { defineConfig } from "@trebired/code-discipline";
 
 export default defineConfig({
-    forVersion: "7.2.1",
+    forVersion: "7.2.3",
     presets: {
       use: ["@trebired/configs"],
     },

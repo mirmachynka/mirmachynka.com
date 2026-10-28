@@ -1,14 +1,10 @@
 import { createLog } from "@trebired/logger";
-import { readProductIdentity } from "@trebired/utils";
 
-const logger = createLog({
-    console: {
-      metadata: false,
-      timestamp: false,
-    },
-    quiet: false,
+const building = Bun.main.endsWith("/frontend/build.ts");
+
+export const logger = createLog({
+    console: { metadata: !building, timestamp: false },
+    quiet: building,
     save: false,
-    source: readProductIdentity().slug,
+    source: "mirmachynka-com",
 });
-
-export { logger };

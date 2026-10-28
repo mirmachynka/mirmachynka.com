@@ -1,25 +1,11 @@
 import type { FrontendConfig } from "@trebired/frontend/config";
 
 export const systems = {
-  actions: false,
-  code: false,
-  editor: false,
-  explorer: false,
-  flash: false,
-  fullscreen: false,
-  graph: false,
   icons: true,
   inputs: true,
-  language: false,
-  layer: true,
-  layout: true,
-  logs: false,
-  modal: false,
+  media: true,
   popover: true,
   primitives: true,
-  progress: true,
-  sidebar: false,
   surface: true,
   theme: true,
-  tooltip: false,
 } satisfies FrontendConfig["systems"];

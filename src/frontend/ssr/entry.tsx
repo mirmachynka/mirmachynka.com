@@ -1,30 +1,43 @@
-import { LiveIslandMount, LocaleProvider } from "@trebired/frontend/react";
-import { siteHeaderRootHtml } from "@trebired/frontend";
-import { buildStaticIconCache, createServerIconRenderer, withIconServerRenderer } from "@trebired/frontend/server";
-import { renderToString } from "react-dom/server";
+import { configureFrontendLanguage, configureLocaleRouting, configureSiteLinks, isErrorRoutePath, siteBodyHtml } from "@trebired/frontend";
+import { LiveIslandMount, LocaleProvider, RenderCurrentUrlProvider } from "@trebired/frontend/react";
+import { createServerIconRenderer, withIconServerRenderer } from "@trebired/frontend/server";
 import type { ReactElement } from "react";
+import { renderToString } from "react-dom/server";
 
-import { ALL_ICON_SPECS } from "#0ecwvk1k07fy";
-import { Footer } from "#k21ef4d3041i";
-import { Header } from "#a6y8rnwh8rgt";
-import { PageContent } from "#bwcts8dmtvye";
+import { language } from "./../../../.trebired/frontend/language";
+import { links } from "./../../../.trebired/frontend/links";
+import { Header } from "./../components/chrome/header";
+import { SiteFooter } from "./../components/chrome/site/footer";
+import { identity } from "./../shared/identity";
+import { LANG_ROUTING } from "./../shared/lang/policy";
+import { PageContent, preparePageContent } from "./../shared/page/content";
+import { canonicalPath, routeExists } from "./../shared/utils/routes";
 
-const iconRenderer = createServerIconRenderer(buildStaticIconCache(ALL_ICON_SPECS));
+configureFrontendLanguage(language);
+configureLocaleRouting(LANG_ROUTING);
+configureSiteLinks(links, { origins: { main: identity.siteOrigin }, set: "main" });
 
-function renderRouteBody(path: string, locale: string): string {
-  const localized = (node: ReactElement) => renderToString(
-    <LocaleProvider locale={locale}>{node}</LocaleProvider>,
+const iconRenderer = createServerIconRenderer({});
+
+export async function renderRouteBody(path: string, locale: string): Promise<string> {
+  await preparePageContent(path);
+  const localized = (node: ReactElement) => withIconServerRenderer(
+    iconRenderer,
+    () => renderToString(
+      <RenderCurrentUrlProvider currentUrl={path}>
+      <LocaleProvider locale={locale}>{node}</LocaleProvider>
+      </RenderCurrentUrlProvider>,
+    ),
   );
-  return withIconServerRenderer(iconRenderer, () => {
-      const header = localized(<Header />);
-      const content = localized(
-        <LiveIslandMount rootId="live_content" stateId="live_content_state">
-        <PageContent path={path} />
-        </LiveIslandMount>,
-      );
-      const footer = localized(<Footer />);
-      return `${siteHeaderRootHtml(header)}${content}${footer}`;
-  });
-}
 
-export { renderRouteBody };
+  const header = localized(<Header path={path} />);
+  const content = localized(
+    <LiveIslandMount rootId="live_content">
+    <PageContent path={path} />
+    </LiveIslandMount>,
+  );
+  const footer = localized(<SiteFooter />);
+  const route = canonicalPath(path);
+  const chrome = !isErrorRoutePath(route) && routeExists(route);
+  return `<div class="tbfm-site-app">${siteBodyHtml({ chrome, content, footer, header, path })}</div>`;
+}

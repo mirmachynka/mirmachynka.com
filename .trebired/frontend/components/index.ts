@@ -1,13 +1,15 @@
 import type { FrontendComponentsConfig } from "@trebired/frontend/config";
 
-import { button, card } from "./button";
-import { input } from "./input";
 import { overlays } from "./overlays";
+import { primitives } from "./primitives";
 import { shell } from "./shell";
+import { surfaces } from "./surfaces";
+import { typography } from "./typography";
 
 export const components = {
   overlays,
-  primitives: { input },
+  primitives,
   shell,
-  surfaces: { button, card },
+  surfaces,
+  typography,
 } satisfies FrontendComponentsConfig;

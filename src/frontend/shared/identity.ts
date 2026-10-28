@@ -1,21 +1,10 @@
-const organizationName = __ORGANIZATION_NAME__;
-const organizationWebsite = __ORGANIZATION_WEBSITE__;
-const ownerName = __OWNER_NAME__;
-const productDomain = __PRODUCT_DOMAIN__;
-const productName = __PRODUCT_NAME__;
-const productSlug = __PRODUCT_SLUG__;
-const productWebsite = __PRODUCT_WEBSITE__;
-const contactEmail = `contact@${productDomain}`;
-const contactHref = `mailto:${contactEmail}`;
+const ownerName = "Miroslav Machynka";
 
-export {
-  contactEmail,
-  contactHref,
-  organizationName,
-  organizationWebsite,
-  ownerName,
-  productDomain,
-  productName,
-  productSlug,
-  productWebsite,
-};
+export const identity = Object.freeze({
+    contactEmail: `contact@${PRODUCT_DOMAIN}`,
+    organizationName: ORGANIZATION_NAME,
+    organizationWebsite: ORGANIZATION_WEBSITE,
+    ownerName,
+    siteName: PRODUCT_DISPLAY_NAME,
+    siteOrigin: BUILD_LOCAL_SITES && typeof window !== "undefined" ? window.location.origin : BUILD_SITE_ORIGIN,
+});

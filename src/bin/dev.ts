@@ -1,71 +1,52 @@
-import { createBunStaticAssetHandler, createFrontendAppBundlerOptions } from "@trebired/bundler/frontend-app";
-import { watch } from "@trebired/bundler";
-import { loadConfig, resolvePrimaryPort, runStartup } from "@trebired/startup";
+#!/usr/bin/env bun
+
+import { createBunStaticAssetHandler } from "@trebired/bundler/frontend-app";
+import { frontendConfigCheck } from "@trebired/frontend/config";
+import { resolvePrimaryPort, runStartup } from "@trebired/startup";
+import { loadConfig as loadStartupConfig } from "@trebired/startup/config";
 import { readProductIdentity } from "@trebired/utils";
 
+import { buildSite } from "./frontend/site_build";
 import { logger } from "./shared/logger";
-import {
-  buildSite,
-  resolveSiteBundlerOptions,
-  shellBuildFromClient,
-  writeSeoArtifacts,
-  writeSiteShell,
-} from "./frontend/build";
 
-const rootDir = process.cwd();
-const startup = await loadConfig(rootDir);
-const port = resolvePrimaryPort(startup.config) ?? 0;
-const identity = readProductIdentity({ startDir: rootDir });
-const bundlerOptions = await resolveSiteBundlerOptions("development", rootDir);
+type BuiltSite = Awaited<ReturnType<typeof buildSite>>["config"];
 
-function serve() {
+const { config: startup } = await loadStartupConfig(process.cwd());
+const port = resolvePrimaryPort(startup) ?? 0;
+if (!port) throw new Error("the startup config declares no port for the dev server");
+const origin = `http://localhost:${port}`;
+const identity = readProductIdentity();
+let built: BuiltSite | null = null;
+let server: ReturnType<typeof Bun.serve>|null = null;
+
+function serve(config: BuiltSite) {
   return Bun.serve({
-      fetch: createBunStaticAssetHandler({
-          clientOutDir: String(bundlerOptions.clientOutDir || "dist"),
-          mode: "development",
-          publicDir: typeof bundlerOptions.publicDir === "string" ? bundlerOptions.publicDir : undefined,
-          rootDir,
-          spaFallback: "index.html",
-      }),
       port,
+      fetch: createBunStaticAssetHandler({
+          clientOutDir: String(config.clientOutDir || "dist"),
+          mode: "development",
+          publicDir: typeof config.publicDir === "string" ? config.publicDir : undefined,
+          rootDir: String(config.rootDir || process.cwd()),
+          spaFallback: "404.html",
+      }),
   });
 }
 
-async function startWatcher() {
-  const options = bundlerOptions;
-  const { client } = createFrontendAppBundlerOptions(options);
-  return watch({
-      ...client,
-      async onRebuilt(result) {
-        await writeSiteShell(options, shellBuildFromClient(options, result), rootDir);
-        await writeSeoArtifacts(options, rootDir);
-        logger.info("watch", `rebuilt :: outputs=${result.outputs.length}`);
-      },
-  });
+async function buildForDev() {
+  built = (await buildSite({ development: true, logger, origin, rootDir: process.cwd() })).config;
 }
-
-let server: ReturnType<typeof serve>|null = null;
-let session: Awaited<ReturnType<typeof startWatcher>>|null = null;
 
 await runStartup({
+    checks: [frontendConfigCheck()],
     bootstrap: {
       subsystems: [
-        {
-          id: "frontend-build",
-          async bootstrap() {
-            await buildSite("development", rootDir);
-            session = await startWatcher();
-          },
-          async shutdown() {
-            await session?.dispose();
-            session = null;
-          },
-        },
+        { id: "frontend-build", bootstrap: buildForDev },
         {
           dependsOn: ["frontend-build"],
           id: "http-server",
           bootstrap() {
-            server = serve();
+            if (!built) throw new Error("frontend build unavailable");
+            server = serve(built);
           },
           async shutdown() {
             await server?.stop(true);
@@ -75,6 +56,6 @@ await runStartup({
       ],
     },
     logger,
-    messageData: { port, product: { name: identity.displayName, version: identity.version } },
+    messageData: { origins: [origin], ports: [port], product: { name: identity.displayName, version: identity.version } },
     terminate: (exitCode: number) => process.exit(exitCode),
 });

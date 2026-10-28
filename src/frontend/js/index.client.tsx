@@ -1,47 +1,61 @@
 import {
   bindFrontendRuntime,
-  bootPageLoadProgress,
   configureLocaleRouting,
+  configureSiteLinks,
   configureSpa,
+  frontendEventName,
+  SITE_FOOTER_ROOT_SELECTOR,
   SITE_HEADER_ROOT_SELECTOR,
 } from "@trebired/frontend";
 import "@trebired/frontend/static-icons";
 import { LocaleProvider } from "@trebired/frontend/react";
-import { createBrowserLog } from "@trebired/logger/browser";
-import { LogErrorBoundary, LogProvider } from "@trebired/logger/browser/react";
 import type { ReactElement } from "react";
 
-import { productSlug } from "#7thctz8gzhqd";
-import { FooterContent } from "#k21ef4d3041i";
-import { Header } from "#a6y8rnwh8rgt";
-import { hydrateChromeRoots } from "#7dgyurrmpuqq";
-import { mountContentIsland } from "#80v43kgu6tk7";
-import { LANGUAGE_ROUTING } from "#szbf6t6578gp";
+import { links } from "./../../../.trebired/frontend/links";
+import { Header } from "./../components/chrome/header";
+import { SiteFooter } from "./../components/chrome/site/footer";
+import { hydrateChromeRoots } from "./../shared/chrome_roots";
+import { mountContentIsland } from "./../shared/content_island";
+import { identity } from "./../shared/identity";
+import { LANG_ROUTING } from "./../shared/lang/policy";
+import { setLang } from "./../shared/lang/store";
+import { REVEAL_SELECTOR } from "./../shared/reveal";
 
-const log = createBrowserLog({
-    group: "frontend.app",
-    source: productSlug,
-});
-
-configureLocaleRouting(LANGUAGE_ROUTING);
-
-function observed(node: ReactElement) {
-  return (
-    <LogProvider log={log}>
-    <LocaleProvider>
-    <LogErrorBoundary group="frontend.chrome">{node}</LogErrorBoundary>
-    </LocaleProvider>
-    </LogProvider>
-  );
-}
-
-bootPageLoadProgress({ minVisibleMs: 320 });
+configureLocaleRouting(LANG_ROUTING);
+configureSiteLinks(links, { origins: { main: identity.siteOrigin }, set: "main" });
 configureSpa({});
 
-void hydrateChromeRoots([
-    [document.querySelector(SITE_HEADER_ROOT_SELECTOR), observed(<Header />)],
-    [document.querySelector("footer"), observed(<FooterContent />)],
-]).then(() => {
-    bindFrontendRuntime(document, { icons: { mode: "static" } });
-    mountContentIsland("live_content");
+const mounted = new WeakSet<Element>();
+
+function localized(node: ReactElement) {
+  return <LocaleProvider>{node}</LocaleProvider>;
+}
+
+function pending(root: Element | null, node: ReactElement): [Element, ReactElement][] {
+  if (!root || mounted.has(root)) return [];
+  mounted.add(root);
+  return [[root, node]];
+}
+
+function mountChrome() {
+  return hydrateChromeRoots([
+      ...pending(document.querySelector(SITE_HEADER_ROOT_SELECTOR), localized(<Header />)),
+      ...pending(document.querySelector(SITE_FOOTER_ROOT_SELECTOR), localized(<SiteFooter />)),
+  ]);
+}
+
+void mountChrome()
+.then(() => mountContentIsland("live_content"))
+.then(() => {
+    bindFrontendRuntime(document, {
+        reveal: { selector: REVEAL_SELECTOR },
+        locale: {
+          persistLocale: async() => ({ ok: true }),
+          refresh: (lang) => setLang(lang as "cs" | "en"),
+        },
+    });
+});
+
+document.addEventListener(frontendEventName("rehydrate"), () => {
+    void mountChrome();
 });

@@ -4,6 +4,21 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 2.0.0
+
+- Migrated the site to `@trebired/frontend` 29, `@trebired/bundler` 5.18, `@trebired/seo` 0.6, `@trebired/i18n` 0.7, `@trebired/startup` 0.8 and `@trebired/utils` 0.9, with the containers, links and language config those releases expect.
+- Changed the page to say openly that Miroslav Machynka founded Trebired, with its own band about the organization and a link to trebired.com.
+- Changed the sections to the opening, Trebired, about, how I work and contact. The work list was removed; project enquiries go to Trebired.
+- Changed the opening to its own composition: the name runs across the page as one line, with the spires of the Cathedral of St Peter and Paul rising through it, and a short statement in the sky under the name. On a phone the drawing becomes a portrait crop around the cathedral.
+- Added Rough.js drawings traced at build time from photographs by `@trebired/overprint/sketch`: Brno in the opening, a fountain pen ending the about page, a rack server across the working principles and a door with a letter slot beside contact.
+- Added the minimal Trebired logo to the Trebired band, fetched at build time from Trebired/meta.
+- Changed every section to a composition of its own: a split band for Trebired, a single narrow page for about, a drawn strip over two columns of principles, and contact set beside its drawing.
+- Changed every title to plain type, without outlined words.
+- Changed the site to the greys of the drawings: no colour anywhere, a language menu without flags, and text links with a plain underline in the page and on hover in the header and footer.
+- Added header links to every section and a footer carrying the social profiles.
+- Added structured data naming him as the founder of Trebired, a social card and an SEO audit that stops the build on an error.
+- Removed the `build:client` script, which ran the same command as `build`.
+
 ## 1.3.1
 
 - Moved to `@trebired/frontend` 13.11.1, which changes the graph cards this site does not use. The header is unchanged.

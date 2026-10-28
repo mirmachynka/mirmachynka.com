@@ -1,29 +1,29 @@
 import type { FrontendOverlayComponentsConfig } from "@trebired/frontend/config";
 
-export const popover = {
-  item: {
-    root: {
-      gap: "10px",
-      height: "40px",
-      padding: "0 12px",
-      radius: "var(--radius-sm)",
-    },
-    states: {
-      hover: {
-        background: "var(--mist-color)",
-        color: "var(--ink-color)",
+export const overlays = {
+  popover: {
+    item: {
+      root: {
+        gap: "var(--space-sm)",
+        padding: "0.5rem 0.65rem",
+        radius: "0.65rem",
+      },
+      state: {
+        hover: {
+          bg: "color-mix(in srgb, currentColor 10%, transparent)",
+        },
+        selected: {
+          bg: "transparent",
+        },
       },
     },
+    panel: {
+      border: "0",
+      minW: "14rem",
+      gap: "var(--space-xs2)",
+      padding: "var(--space-xs2)",
+      radius: "1rem",
+      shadow: "var(--tbf-shadow)",
+    },
   },
-  panel: {
-    background: "var(--background-page)",
-    border: "1px solid var(--border-surface-1)",
-    color: "var(--text-color-muted)",
-    gap: "2px",
-    padding: "6px",
-    radius: "var(--radius-lg)",
-    shadow: "0 18px 40px rgba(24, 24, 24, 0.14)",
-  },
-} satisfies NonNullable<FrontendOverlayComponentsConfig["popover"]>;
-
-export const overlays = { popover } satisfies FrontendOverlayComponentsConfig;
+} satisfies FrontendOverlayComponentsConfig;

@@ -1,11 +1,13 @@
 <div align="center">
 
-<img src="src/brand/favicon.svg" alt="mirmachynka.com" width="120">
+<p>
+<img src="src/brand/favicon.svg" alt="mirmachynka.com" width="120" align="top">
+</p>
 
-**The personal site of Miroslav Machynka: a bilingual, prerendered portfolio covering the work he takes on, how he builds, and a direct contact address.**
+**The personal site of Miroslav Machynka, founder of Trebired: who he is, the organization he started, how he works and where to reach him, in English and Czech.**
 
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Runtime](https://img.shields.io/badge/runtime-Bun%201%2B-black)](#install)
+[![License](https://img.shields.io/badge/license-MIT-black)](LICENSE)
+[![Runtime](https://img.shields.io/badge/runtime-Bun-black)](#install)
 [![Output](https://img.shields.io/badge/output-static%20site-black)](#runtime)
 
 </div>
@@ -19,12 +21,13 @@
 - [Concepts](#concepts)
 - [Configuration](#configuration)
 - [Runtime](#runtime)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [What It Does Not Do](#what-it-does-not-do)
 
 ## Install
 
-Runtime support: Bun 1+.
+Bun 1 or later.
 
 ```sh
 bun i
@@ -36,71 +39,69 @@ bun i
 bun run dev
 ```
 
-The dev server runs behind the Code Discipline gate, builds the client into `dist`, watches `src/frontend`, and serves on port 3000. `bun run dev:app` skips the gate. `bun run build` writes the production client and the prerendered documents into `dist`, which is the directory to deploy.
+The dev server runs behind the Code Discipline gate, builds the client bundle, writes one HTML document per language and serves the result on port 3000. Set `PORT` to use another port. `bun run dev:app` skips the gate.
+
+Production build:
+
+```sh
+bun run build
+```
+
+The build writes the site to `dist/`. It is a static directory; serve it with any static host.
 
 ## Concepts
 
-### One page per locale, prerendered, then hydrated
+### Frontend-only site
 
-There is no backend and no client router. `src/frontend/pages/home.tsx` composes five sections: the opening statement, the work list, the about text, the working principles, and contact. At build time `src/frontend/ssr/entry.tsx` renders the header, the page body, and the footer to HTML once per locale, and `@trebired/bundler` writes each into its own static document with its own head tags. In the browser the header and footer hydrate as their own roots and the page body hydrates as a live island.
+The site has no backend. `src/bin/frontend/build.ts` bundles the client and prerenders every document; nothing runs at request time. `src/bin/dev.ts` is local preview, not a production server. The header, the page and the footer hydrate as separate roots in the browser.
 
-### Locale-prefixed routing
+### One page, five sections
 
-English is served at `/` and Czech at `/cs`, each a separate prerendered document with its own `<html lang>`, title, description, canonical URL, and `hreflang` set. `@trebired/frontend` owns the mechanism: a boot script in the head resolves the visitor's locale from storage or the browser and redirects before first paint, and `LocaleProvider` supplies the same locale to the server render and to hydration so the two agree. The language is never corrected after the page is visible, and both locales are separately indexable.
+`src/frontend/pages/home/` holds the only page: the opening with the drawing of Brno, the Trebired founder band, the about text, the working principles and contact, each with a composition and a drawing of its own. Each section is its own file, and the copy for all of them lives in `i18n/en.ts` and `i18n/cs.ts` beside them. `src/frontend/shared/utils/routes.ts` holds the page title and description in both languages; the build reads them for the document head and the SEO audit.
 
-### Trebired package ownership
+### Drawings
 
-Generic behaviour belongs to the packages, not to this repository:
+The opening, the about section, the working principles and contact each carry a pen drawing traced from a photograph: Brno and the Cathedral of St Peter and Paul in the opening, a fountain pen in the about section, a rack server on its rails in the working principles and a door with a letter slot in contact. The photographs are in `src/art/`. At build time `src/bin/frontend/art.ts` decodes each one with `sharp` and passes the pixels to `sketch()` from `@trebired/overprint/sketch`, which traces the outlines with Rough.js, hatches the shading and leaves the background blank, and writes the drawing to `dist/art/`. `src/frontend/pages/home/drawings.ts` declares each drawing's file and size; the build stops when a drawing comes out at another size, so the image dimensions in the markup never drift. Drawings are traced near the size they are shown at, because the strokes are measured in the drawing's own pixels. Nothing generated is committed.
 
-- `@trebired/frontend` owns the layout primitives, text links, icons, flags, popover, progress bar, design tokens, favicon generation, locale routing, and the browser runtime.
-- `@trebired/bundler` owns the client build, SCSS compilation, asset manifest, static document generation, and the Bun static asset handler.
-- `@trebired/seo` owns canonical URLs, `hreflang` alternates, Open Graph and Twitter tags, JSON-LD, `robots.txt`, and `sitemap.xml`.
-- `@trebired/i18n` owns translation lookup and the colocated translator transform.
-- `@trebired/logger` owns everything `src/bin` prints.
-- `@trebired/startup` owns dev server lifecycle, shutdown, and the port requirement.
-- `@trebired/utils` owns the organization and product identity readers used at build time.
-- `@trebired/code-discipline` owns formatting, size limits, comment removal, and alias-managed imports.
+"Brno View 01" by Scotch Mist, the photograph of Brno, is published on Wikimedia Commons under CC BY-SA 4.0, and the drawing made from it is shared under the same licence. The pen, server and door photographs are public domain or CC0, from Wikimedia Commons and Unsplash. The MIT licence of this repository covers the code, not the photographs or the drawings.
 
-Application code supplies copy, section structure, and design values.
+### The Trebired logo
 
-### Colocated translations
-
-Every component that renders text calls `createLocalTranslator(import.meta.url, language)` and keeps `i18n/en.ts` and `i18n/cs.ts` beside itself. The bundler rewrites those calls into static imports at build time and fails the build when the two language files disagree on keys.
-
-### Colocated styles
-
-Every stylesheet is a `styles.scss` next to the component it styles. The bundler collects global styles by filename pattern, not by import: `css/**/*.scss`, `components/**/styles.scss`, `components/**/styles/**/*.scss`, and the same three under `js/`. A stylesheet outside those patterns, such as `pages/styles.scss`, is silently dropped from the bundle with no error. Page level rules therefore live in `components/chrome/page/styles.scss`.
-
-### Hand-drawn shapes
-
-`components/domain/shapes` places fixed pastel circles, squares, and triangles behind the page, one set per section. Every shape is generated with Rough.js from a seed declared in `src/frontend/shared/shapes.ts`, so each is drawn its own way and the output is identical on the server and in the browser. Seeding is what makes them safe to prerender.
+The Trebired band shows the minimal Trebired logo. The build fetches it from `brand/brand.json` in Trebired/meta through the `trebiredLogo` data source in `.trebired/bundler/config.ts`, in its tone for dark surfaces, and writes it to `dist/brand/trebired.svg`. The repository keeps no copy; when GitHub cannot be reached, the build uses the copy the last build kept in `dist/data`.
 
 ### The brand mark
 
-`src/brand/favicon.svg` is the only icon source: a lowercase `mm` in Bricolage Grotesque over a hand-drawn hatched square. `@trebired/frontend` rasterizes it at build time into `favicon.ico`, `apple-touch-icon.png`, and the PNG sizes, and emits the head links. Nothing generated is written back into the repository.
+`src/brand/favicon.svg` is the only icon source: a lowercase `mm` over a hand-drawn hatched square. `@trebired/frontend` rasterizes it at build time into the favicon set, and the build composites it into the social card. Nothing generated is written back into the repository.
 
 ## Configuration
 
-Package behaviour is configured under `.trebired/`:
-
 | File | Owns |
 | --- | --- |
-| `.trebired/frontend/config.ts` | Palette, theme mode, scales, button tones, fonts, flags, favicon source, static icon specs, enabled systems |
-| `.trebired/bundler/config.ts` | Frontend directory, output layout, public path |
-| `.trebired/seo/config.ts` | Site URL, locales, locale strategy, robots policy, sitemap defaults |
-| `.trebired/i18n/config.ts` | Supported languages, fallback language, checker root |
+| `.trebired/bundler/config.ts` | Frontend directory, output directory, public path |
+| `.trebired/frontend/config.ts` | Palette, type, containers, components, systems, fonts, icons, favicons |
+| `.trebired/frontend/links.ts` | Header and footer links |
+| `.trebired/frontend/language.ts` | Languages, the default language, error page copy |
+| `.trebired/seo/config.ts` | Site URL, locale strategy, robots policy, social card, sitemap defaults |
+| `.trebired/i18n/config.ts` | Translation checking |
 | `.trebired/startup/config.ts` | Dev server port requirement and shutdown timeout |
-| `.trebired/code-discipline/config.ts` | Preset, banned patterns, process boundary files |
+| `.trebired/code-discipline/config.ts` | Enforcement presets, banned patterns, process boundary files |
+| `package.json#config` | Organization and product identity |
 
-The site is light only: `.trebired/frontend/theme.ts` declares a single `light` mode and the palette maps every semantic token to it. Product and organization identity live in `package.json#config`, are injected as build-time defines, and are re-exported from `src/frontend/shared/identity.ts`. The contact address is derived from the product domain and is never written as a literal.
+The contact address is derived from the product domain in `src/frontend/shared/identity.ts` and is never written as a literal. Social profiles live in `src/frontend/shared/social.ts`.
 
-Editing a file that `.trebired/frontend/config.ts` imports through a `#` alias, such as `src/frontend/icon_specs.ts`, does not invalidate the compiled config cache. Clear `node_modules/.cache/frontend` when a config change does not take effect.
+Editing a file that `.trebired/frontend/config.ts` imports does not always invalidate the compiled config cache. Clear `node_modules/.cache/frontend` when a config change does not take effect.
 
 ## Runtime
 
-The build emits an ES module client bundle, two stylesheets, the self hosted font files, the rasterized favicon set, `robots.txt`, `sitemap.xml`, and one prerendered HTML document per locale. Deploy `dist` to any static host that resolves a directory to its `index.html`. `netlify.toml` declares the build command and publish directory for the hosted deploy, so the host needs no build settings of its own.
+Bun runs the build and the dev server. The published output is static HTML, CSS, JavaScript and assets; the browser is the only runtime a visitor needs.
 
-Icons resolve from a build-generated static cache, so the page makes no icon requests. The chosen locale is stored in `localStorage` and applied by redirecting to that locale's URL before first paint. A page load progress bar is booted from the client entry and driven by `@trebired/frontend`.
+English is served at `/` and Czech at `/cs`. Each document carries its own `<html lang>`, title, description, canonical URL and language alternates, and holds the other language as an inert template. The language menu switches the page in place, without a reload and without changing the address; the language URLs exist for search engines. The build writes `sitemap.xml`, `robots.txt`, structured data describing Miroslav Machynka as the founder of Trebired, and a social card, and it stops when the SEO audit finds an error.
+
+`netlify.toml` declares the build command, the publish directory and the Bun version, so the host needs no build settings of its own.
+
+## Documentation
+
+This README is the site documentation. Contributor commands are in [CONTRIBUTING.md](CONTRIBUTING.md). Released changes are in [CHANGELOG.md](CHANGELOG.md).
 
 ## Contributing
 
@@ -108,11 +109,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## What It Does Not Do
 
-This application does not:
-
-- Run a server, a database, or any scheduled work. Every document is prerendered at build time.
-- Collect anything. There is no contact form; the contact address is a `mailto:` link.
-- Set analytics, advertising, or tracking cookies.
-- Ship a test suite. Verification is `code-discipline check`, `tsc --noEmit`, and a real build.
-- Restyle `@trebired/frontend` components from application CSS. Appearance changes go through `.trebired/frontend/config.ts`.
-- Serve routes beyond the single page in each locale, or offer a dark theme.
+- No contact form, email delivery or message handling. Contact runs through the published email address and social profiles.
+- No project intake. Enquiries about building something go to Trebired at trebired.com/contact.
+- No backend, database, session or user account.
+- No analytics, tracking, advertising or third-party scripts, and no cookie consent layer, because nothing needs one.
+- No content management interface. Copy changes are code changes in the colocated `i18n` folders.
+- No test suite. Verification is `code-discipline check`, `tsc --noEmit` and a real build.
