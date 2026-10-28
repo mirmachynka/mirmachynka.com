@@ -71,7 +71,7 @@ The Trebired band shows the minimal Trebired logo. The build fetches it from `br
 
 ### The brand mark
 
-`src/brand/favicon.svg` is the only icon source: a lowercase `mm` in Bricolage Grotesque inside a ring drawn with Rough.js, ink on paper, with the letters converted to outlines so every browser draws it the same. `@trebired/frontend` rasterizes it at build time into the favicon set. `src/brand/social-card.svg` is the social card: the name, the motto "Built to outlast me." underlined in aqua, and a hand holding a fountain pen at the end of the line it drew, traced from a CC0 photograph with `sketch()` like the drawings on the page, with its type converted to outlines so the build needs no fonts; the build rasterizes it to `dist/social-card.png`. Nothing generated is written back into the repository.
+`src/brand/favicon.svg` is the only icon source: a lowercase `mm` in Bricolage Grotesque inside a ring drawn with Rough.js, ink on paper, with the letters converted to outlines so every browser draws it the same. `@trebired/frontend` rasterizes it at build time into the favicon set. `src/brand/social-card.svg` is the social card: the name, the motto "Built to outlast me." underlined in purple, and a hand holding a fountain pen at the end of the line it drew, traced from a CC0 photograph with `sketch()` like the drawings on the page, with its type converted to outlines so the build needs no fonts; the build rasterizes it to `dist/social-card.png`. Nothing generated is written back into the repository.
 
 ## Configuration
 

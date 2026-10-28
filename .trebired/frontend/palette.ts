@@ -15,7 +15,7 @@ export const palette = {
   modes: {
     light: {
       scale: {
-        aqua: { "500": "#9fe3dc" },
+        purple: { "500": "#946e93" },
         neutral,
         primary: { "500": "oklch(0.24 0 0)" },
         white: { "500": "oklch(1 0 0)" },
@@ -27,7 +27,7 @@ export const palette = {
     "background-page": { family: "neutral", step: "100" },
     "border-surface-1": { family: "neutral", step: "400" },
     "border-surface-2": { family: "neutral", step: "300" },
-    "focus-color": { family: "neutral", step: "900" },
+    "focus-color": { family: "purple", step: "500" },
     "surface-1": { family: "neutral", step: "0" },
     "surface-2": { family: "neutral", step: "200" },
     "text-color": { family: "neutral", step: "900" },

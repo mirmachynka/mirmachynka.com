@@ -16,9 +16,10 @@ const semantic = {
   textMuted: token.semantic("text-color-muted"),
 };
 
-const aqua = {
-  deep: token.colorMix(token.color("aqua", "500"), "80%", semantic.textColor),
-  root: token.color("aqua", "500"),
+const purple = {
+  deep: token.colorMix(token.color("purple", "500"), "82%", semantic.textColor),
+  fill: token.colorMix(token.color("purple", "500"), "95%", semantic.textColor),
+  root: token.color("purple", "500"),
 };
 
 const shade = token.color("neutral", "250");
@@ -31,4 +32,4 @@ const ui = {
 
 const CONTENT_MAX = "110rem";
 
-export { CONTENT_MAX, aqua, semantic, shade, token, ui };
+export { CONTENT_MAX, purple, semantic, shade, token, ui };

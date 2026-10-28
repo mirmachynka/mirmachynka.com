@@ -4,6 +4,11 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.0.1
+
+- Changed the accent from aqua to `#946e93`, the purple the trebired.com landing page leads with, for link underlines, the active header link and focus rings. Buttons are filled with it mixed with 5 % of the text ink, so their white labels stay readable.
+- Changed the social card to set the name, the motto and the pen larger, so they fill the card, and to underline the motto in the same purple.
+
 ## 3.0.0
 
 - Changed the Trebired logo in the Trebired band to a larger size, on a phone as well.
