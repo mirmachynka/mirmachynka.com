@@ -23,8 +23,7 @@ import { renderRouteBodies } from "./ssr";
 
 type SiteBuildOptions = { development: boolean; logger?: BundlerLogger; origin: string; rootDir: string };
 
-const SOCIAL_GROUND = "#f4f1ea";
-const BRAND_MARK = "src/brand/favicon.svg";
+const SOCIAL_CARD = "src/brand/social-card.svg";
 
 function seoWarnings(issues: SeoAuditIssue[]): string[] {
   const errors = issues.filter((found) => found.level === "error");
@@ -33,11 +32,7 @@ function seoWarnings(issues: SeoAuditIssue[]): string[] {
 }
 
 async function writeSocialCard(outDir: string) {
-  const mark = await sharp(BRAND_MARK, { density: 300 }).resize({ width: 360 }).png().toBuffer();
-  await sharp({ create: { background: SOCIAL_GROUND, channels: 3, height: 630, width: 1200 } })
-  .composite([{ gravity: "center", input: mark }])
-  .png()
-  .toFile(`${outDir}/social-card.png`);
+  await sharp(SOCIAL_CARD, { density: 144 }).resize({ height: 630, width: 1200 }).png().toFile(`${outDir}/social-card.png`);
 }
 
 async function writeCrawlerFiles(outDir: string, seo: ReturnType<typeof createSiteSeo>) {

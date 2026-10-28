@@ -4,6 +4,20 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.0.0
+
+- Changed the Trebired logo in the Trebired band to a larger size, on a phone as well.
+- Changed the opening statement to describe Miroslav Machynka himself instead of Trebired, and set it in a wider column.
+- Changed the name in the header to a larger size, a step smaller on the narrowest phones.
+- Fixed the page scrolling sideways until the working principles came into view. Their drawing reached the full width with a shift that the reveal animation overrode until it ran; it now reaches it by its position.
+- Changed the about section to two columns, the text on the left and the drawing of the pen on the right.
+- Changed the look of the site to its own: light paper sections separated by hairline rules instead of alternating dark and grey bands, with the header, the opening and the footer on a light grey, the Trebired logo in black, and pill-shaped buttons and controls.
+- Added one colour, `#9fe3dc`, the aqua the Trebired logo is printed in on the trebired.com blog, for filled buttons and link underlines. Text stays dark, so it reads on the light paper, and focus rings are dark ink. The language menu shows its flags again.
+- Changed the favicon to a lowercase `mm` inside a hand-drawn ring, ink on paper.
+- Changed the social card to the name and the motto "Built to outlast me.", underlined in aqua by a hand-drawn fountain pen traced from a photograph.
+- Changed the drawing beside contact to a rotary dial telephone.
+- Changed the drawing above the working principles to the front of a single rack server, in place of a server pulled out on its rails.
+
 ## 2.0.0
 
 - Migrated the site to `@trebired/frontend` 29, `@trebired/bundler` 5.18, `@trebired/seo` 0.6, `@trebired/i18n` 0.7, `@trebired/startup` 0.8 and `@trebired/utils` 0.9, with the containers, links and language config those releases expect.

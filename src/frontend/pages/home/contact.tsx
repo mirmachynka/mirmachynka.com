@@ -31,7 +31,7 @@ export function ContactBand({ translator }: { translator: I18nTranslator }) {
     </PrimitiveButton>
     </div>
     </div>
-    <Drawing className="tbfm-contact__drawing" drawing={DRAWINGS.door} label={translator("contact.drawing")} />
+    <Drawing className="tbfm-contact__drawing" drawing={DRAWINGS.phone} label={translator("contact.drawing")} />
     </div>
     </SectionBand>
   );

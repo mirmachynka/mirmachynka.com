@@ -12,7 +12,7 @@ export default defineMessages({
         "and Linux is where I develop, deploy and design first.",
     },
     approach: {
-      drawing: "A pen drawing of a rack server pulled out of its rack on rails.",
+      drawing: "A pen drawing of the front of a rack server.",
       points: {
         after: "I stay after launch. Updates, monitoring and fixes are part of the work, not a separate contract found out about later.",
         comments: "There are no comments in the code. If a function needs a paragraph to explain it, the function is what is wrong.",
@@ -28,7 +28,7 @@ export default defineMessages({
       title: "How I work",
     },
     contact: {
-      drawing: "A pen drawing of an old wooden door with a brass letter slot.",
+      drawing: "A pen drawing of a rotary dial telephone.",
       email: "Write to me",
       project: "Start a project with Trebired",
       text: "For a website, an application or anything else you want built, write to Trebired. Everything else comes to me directly.",
@@ -48,8 +48,8 @@ export default defineMessages({
     },
     opening: {
       lead:
-      "I founded Trebired and I maintain it. I write the packages it is built on, the products it runs and the websites it " +
-        "publishes, and every line of it is open source.",
+      "I am a software developer from Brno. I design and build software from end to end, from the first sketch to the server it " +
+        "runs on, and I keep looking after it once it is live.",
       skyline: "A pen drawing of Brno: the Cathedral of St Peter and Paul on Petrov hill, above the rooftops of the old town.",
       title: "Miroslav Machynka",
     },

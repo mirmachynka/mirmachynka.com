@@ -12,7 +12,7 @@ export default defineMessages({
         "a Linux je to, na čem vyvíjím, kam nasazuji a pro co navrhuji jako první.",
     },
     approach: {
-      drawing: "Perokresba serveru vysunutého z racku na kolejnicích.",
+      drawing: "Perokresba čelního panelu serveru do racku.",
       points: {
         after: "Po spuštění zůstávám. Aktualizace, dohled a opravy jsou součást práce, ne zvláštní smlouva, o které se dozvíte později.",
         comments: "V kódu nejsou komentáře. Když funkce potřebuje odstavec vysvětlení, chyba je ve funkci.",
@@ -28,7 +28,7 @@ export default defineMessages({
       title: "Jak pracuji",
     },
     contact: {
-      drawing: "Perokresba starých dřevěných dveří s mosaznou poštovní štěrbinou.",
+      drawing: "Perokresba telefonu s otočným číselníkem.",
       email: "Napište mi",
       project: "Začít projekt s Trebired",
       text: "Kvůli webu, aplikaci nebo čemukoli dalšímu, co chcete postavit, napište organizaci Trebired. Všechno ostatní přímo mně.",
@@ -48,8 +48,8 @@ export default defineMessages({
     },
     opening: {
       lead:
-      "Založil jsem Trebired a starám se o něj. Píšu balíčky, na kterých stojí, produkty, které provozuje, i weby, které vydává, " +
-        "a každý řádek z toho je open source.",
+      "Jsem vývojář softwaru z Brna. Software navrhuji a stavím celý, od první skici po server, na kterém běží, a starám se " +
+        "o něj i potom, co je spuštěný.",
       skyline: "Perokresba Brna: katedrála svatého Petra a Pavla na Petrově nad střechami starého města.",
       title: "Miroslav Machynka",
     },

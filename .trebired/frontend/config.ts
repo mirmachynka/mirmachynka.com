@@ -19,6 +19,9 @@ export default defineConfig({
         light: "src/brand/favicon.svg",
         dark: "src/brand/favicon.svg",
       },
+      flags: {
+        countries: ["cz", "gb"],
+      },
       icons: {
         mode: "static",
         specs: [

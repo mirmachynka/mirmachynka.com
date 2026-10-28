@@ -9,9 +9,9 @@ const INK = "#222222";
 
 const SOURCES: SketchSource[] = [
   { name: "brno", photo: "src/art/brno.jpg" },
-  { name: "door", options: { detail: 0.2, shading: 0.4 }, photo: "src/art/door.jpg" },
   { name: "pen", photo: "src/art/pen.jpg" },
-  { name: "server", photo: "src/art/server.jpg" },
+  { name: "phone", photo: "src/art/phone.jpg" },
+  { name: "server", options: { detail: 0.6, shading: 0.5 }, photo: "src/art/server.jpg" },
 ];
 
 async function writeSketch(outDir: string, source: SketchSource) {

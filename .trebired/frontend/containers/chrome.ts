@@ -2,19 +2,8 @@ import { CONTENT_MAX, token } from "./../tokens";
 
 import type { FrontendContainer } from "@trebired/frontend/config";
 
-const REVEAL_EASE = token.css `${token.frontend("reveal-duration", "0.55s")} ${token.frontend("reveal-easing", "cubic-bezier(0.22, 0.61, 0.36, 1)")}`;
-
-const HOVER_EASE = "0.3s ease";
-
-const MOVE = token.css `opacity ${REVEAL_EASE}, translate ${REVEAL_EASE}`;
-
-const PAINT = `background-color ${HOVER_EASE}, border-color ${HOVER_EASE}, outline-color ${HOVER_EASE}, color ${HOVER_EASE}`;
-
-const REVEALED = token.css `${MOVE}, ${PAINT}`;
-
 const siteApp: FrontendContainer = {
   on: {
-    "& :is(.tbfm-figure, .tbfm-card)[data-tbf-reveal]": { transition: REVEALED },
     "& :where(p)": { color: "color-mix(in srgb, currentcolor 78%, transparent)", lineHeight: "1.75", textWrap: "pretty" },
     "& :where(ul:not([class]), ol:not([class]))": {
       display: "grid",

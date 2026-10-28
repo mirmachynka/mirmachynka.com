@@ -1,11 +1,11 @@
-import { token } from "./../tokens";
+import { shade, token } from "./../tokens";
 
 import type { FrontendContainer } from "@trebired/frontend/config";
 import { HAIRLINE } from "./tokens";
 
 const HEADER_GAP = token.css `calc(${token.frontend("shell-header-height", "5rem")} + ${token.variable("space-lg")})`;
 
-const BREAKOUT = { inlineSize: "100vw", insetInlineStart: "50%", position: "relative", translate: "-50% 0" };
+const BREAKOUT = { inlineSize: "100vw", insetInlineStart: "calc(50% - 50vw)", position: "relative" };
 
 const opening: FrontendContainer = {
   at: { md: { "--text-size-xl7": "clamp(2.6rem, 16vw, 6rem)" } },
@@ -14,7 +14,7 @@ const opening: FrontendContainer = {
     drawing: { style: { blockSize: "100%", display: "block", inlineSize: "100%", objectFit: "cover", objectPosition: "50% 100%" } },
     lead: {
       at: { md: { gridRow: "auto", maxInlineSize: "none" } },
-      style: { gridColumn: "1", gridRow: "2", maxInlineSize: "min(24rem, 32vw)", position: "relative", zIndex: "2" },
+      style: { gridColumn: "1", gridRow: "2", maxInlineSize: "min(30rem, 31vw)", position: "relative", zIndex: "2" },
     },
     stage: {
       at: { md: { gridTemplateRows: "auto" } },
@@ -44,6 +44,7 @@ const opening: FrontendContainer = {
   },
   style: {
     "--text-size-xl7": "clamp(2.6rem, 8.6vw, 10rem)",
+    background: shade,
     justifyContent: "flex-end",
     minBlockSize: "100svh",
     overflow: "hidden",
@@ -63,8 +64,8 @@ const founder: FrontendContainer = {
   parts: {
     layout: { ...SPLIT, style: { ...SPLIT.style, gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)" } },
     logo: {
-      at: { md: { inlineSize: "min(40%, 9rem)", justifySelf: "start", order: "-1" } },
-      style: { ...PICTURE, inlineSize: "min(70%, 20rem)", justifySelf: "center" },
+      at: { md: { inlineSize: "min(70%, 16rem)", justifySelf: "start", order: "-1" } },
+      style: { ...PICTURE, inlineSize: "min(100%, 36rem)", justifySelf: "center" },
     },
     text: { style: { maxInlineSize: "40rem" } },
   },
@@ -72,15 +73,15 @@ const founder: FrontendContainer = {
 
 const about: FrontendContainer = {
   parts: {
-    drawing: { style: { ...PICTURE, inlineSize: "min(100%, 38rem)", justifySelf: "end" } },
-    page: { style: { alignSelf: "center", display: "grid", gap: token.variable("space-md"), inlineSize: "100%", maxInlineSize: "38rem" } },
+    drawing: { at: { md: { inlineSize: "min(100%, 30rem)", justifySelf: "end" } }, style: PICTURE },
+    layout: { ...SPLIT, style: { ...SPLIT.style, gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)" } },
   },
 };
 
 const approach: FrontendContainer = {
   parts: {
-    drawing: { style: { ...PICTURE, blockSize: "100%", objectFit: "cover", objectPosition: "50% 45%" } },
-    strip: { at: { md: { aspectRatio: "2 / 1" } }, style: { ...BREAKOUT, aspectRatio: "4 / 1", overflow: "hidden" } },
+    drawing: { style: { ...PICTURE, blockSize: "100%", objectFit: "cover", objectPosition: "50% 50%" } },
+    strip: { at: { md: { aspectRatio: "5 / 2" } }, style: { ...BREAKOUT, aspectRatio: "4 / 1", overflow: "hidden" } },
   },
 };
 
@@ -106,9 +107,10 @@ const contact: FrontendContainer = {
 };
 
 const nameMark: FrontendContainer = {
+  at: { xs2: { fontSize: "1.375rem" } },
   style: {
     fontFamily: token.variable("font-title"),
-    fontSize: "1.25rem",
+    fontSize: "1.625rem",
     fontWeight: "800",
     lineHeight: "1",
     whiteSpace: "nowrap",

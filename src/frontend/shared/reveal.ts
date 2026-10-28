@@ -1,3 +1,3 @@
-const REVEAL_TARGETS = [".tbfm-band__inner > *", ".tbfm-figure", ".tbfm-card"];
+const REVEAL_TARGETS = [".tbfm-band__inner > *"];
 
 export const REVEAL_SELECTOR = REVEAL_TARGETS.join(", ");

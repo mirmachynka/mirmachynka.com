@@ -1,6 +1,6 @@
 import type { FrontendPrimitiveComponentsConfig } from "@trebired/frontend/config";
 
-import { semantic, ui } from "./../tokens";
+import { aqua, semantic, ui } from "./../tokens";
 
 export const primitives = {
   button: {
@@ -36,14 +36,14 @@ export const primitives = {
         },
       },
       primary: {
-        bg: semantic.textColor,
+        bg: aqua.root,
         border: "transparent",
-        color: semantic.backgroundPage,
+        color: semantic.textColor,
         state: {
           hover: {
-            bg: `color-mix(in srgb, ${semantic.textColor} 88%, ${semantic.backgroundPage})`,
+            bg: aqua.deep,
             border: "transparent",
-            color: semantic.backgroundPage,
+            color: semantic.textColor,
           },
         },
       },
@@ -90,15 +90,15 @@ export const primitives = {
   textLink: {
     root: {
       color: "currentColor",
-      decorationColor: "color-mix(in srgb, currentColor 35%, transparent)",
+      decorationColor: aqua.root,
       decorationLine: "none",
-      decorationThickness: "1px",
-      decorationUnderlineOffset: "0.22em",
+      decorationThickness: "0.16em",
+      decorationUnderlineOffset: "0.16em",
       fontWeight: "500",
       underlineHeight: "0px",
     },
     state: {
-      hover: { color: "currentColor", decorationColor: "currentColor", decorationLine: "underline" },
+      hover: { color: "currentColor", decorationColor: aqua.deep, decorationLine: "underline" },
     },
   },
 } satisfies FrontendPrimitiveComponentsConfig;

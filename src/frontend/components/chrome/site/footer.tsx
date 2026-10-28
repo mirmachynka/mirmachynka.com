@@ -12,7 +12,6 @@ export function SiteFooter() {
   return (
     <PackageFooter
     softRedirect
-    tone="inverse"
     social={SOCIAL_LINKS}
     brand={<NameMark className="tbfm-name-mark--footer" />}
     note={<span>© {new Date().getFullYear()} {identity.ownerName}. {translator("footer.rights")}</span>}

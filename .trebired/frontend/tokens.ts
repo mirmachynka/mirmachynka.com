@@ -16,12 +16,19 @@ const semantic = {
   textMuted: token.semantic("text-color-muted"),
 };
 
+const aqua = {
+  deep: token.colorMix(token.color("aqua", "500"), "80%", semantic.textColor),
+  root: token.color("aqua", "500"),
+};
+
+const shade = token.color("neutral", "250");
+
 const ui = {
-  controlRadius: token.variable("tbf-radius-sm", "0.75rem"),
-  iconControlRadius: token.variable("tbf-radius-xs", "0.375rem"),
+  controlRadius: "999px",
+  iconControlRadius: "999px",
   fontSans: token.variable("tbf-font-sans", "Geist, sans-serif"),
 };
 
 const CONTENT_MAX = "110rem";
 
-export { CONTENT_MAX, semantic, token, ui };
+export { CONTENT_MAX, aqua, semantic, shade, token, ui };

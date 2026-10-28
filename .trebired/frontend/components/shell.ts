@@ -1,4 +1,4 @@
-import { CONTENT_MAX, ui } from "./../tokens";
+import { CONTENT_MAX, shade, ui } from "./../tokens";
 
 export const shell = {
   category: { gap: "var(--space-sm)", linksGap: "var(--space-xs2)" },
@@ -11,6 +11,7 @@ export const shell = {
     inner: { columns: "minmax(0, 4fr) minmax(0, 8fr)", gap: "var(--space-lg)" },
     maxWidth: CONTENT_MAX,
     root: {
+      bg: shade,
       border: "var(--tbf-border-width, 1px) solid color-mix(in srgb, currentColor 14%, transparent)",
       py: "var(--space-xl)",
     },
@@ -30,11 +31,12 @@ export const shell = {
   header: {
     actionsGap: "var(--space-sm)",
     brand: {
-      button: { radius: "0.5rem" },
+      button: { radius: ui.controlRadius },
     },
     maxWidth: CONTENT_MAX,
     navGap: "var(--space-md)",
     menu: {
+      bg: shade,
       border: "0",
       gap: "var(--space-sm)",
       groupIndent: "var(--space-sm)",
@@ -42,6 +44,7 @@ export const shell = {
       py: "var(--space-sm)",
     },
     root: {
+      bg: shade,
       border: "1px solid color-mix(in srgb, currentColor 14%, transparent)",
       position: "fixed",
       zIndex: "50",

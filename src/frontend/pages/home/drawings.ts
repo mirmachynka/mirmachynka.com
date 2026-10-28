@@ -2,9 +2,9 @@ type Drawing = { height: number; href: string; width: number };
 
 const DRAWINGS = {
   brno: { height: 801, href: "/art/brno.svg", width: 1600 },
-  door: { height: 509, href: "/art/door.svg", width: 760 },
   pen: { height: 571, href: "/art/pen.svg", width: 760 },
-  server: { height: 536, href: "/art/server.svg", width: 1200 },
+  phone: { height: 812, href: "/art/phone.svg", width: 760 },
+  server: { height: 300, href: "/art/server.svg", width: 1200 },
 } satisfies Record<string, Drawing>;
 
 type DrawingName = keyof typeof DRAWINGS;

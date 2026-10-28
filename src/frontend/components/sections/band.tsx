@@ -16,8 +16,6 @@ export type SectionArchetype =
 | "statement"
 | "tiles";
 
-export type BandTone = "inverse" | "muted" | undefined;
-
 const TIGHT = new Set<SectionArchetype>(["prose", "statement"]);
 
 export type SectionWeight = "major" | "minor";
@@ -30,7 +28,6 @@ export function SectionBand({
     headline,
     id,
     style,
-    tone,
     weight = "minor",
   }: {
     archetype: SectionArchetype;
@@ -40,13 +37,11 @@ export function SectionBand({
     headline?: ReactNode;
     id?: string;
     style?: CSSProperties;
-    tone?: BandTone;
     weight?: SectionWeight;
 }) {
   const bandClass: (string | false | undefined)[] = [
     "tbfm-band",
     weight === "major" ? "tbfm-band--major" : false,
-    tone ? `tbfm-band--${tone}` : false,
     className,
   ];
 
@@ -56,7 +51,6 @@ export function SectionBand({
     style={style}
     className={classNames(bandClass)}
     data-section={archetype}
-    data-tbf-dark={tone === "inverse" ? "" : undefined}
     >
     <div className={classNames(["tbfm-band__inner", TIGHT.has(archetype) ? "tbf-gap-md" : "tbf-gap-lg"])}>
     {field ? <Title className="tbf-text-xl6" level={2}>{field}</Title> : null}

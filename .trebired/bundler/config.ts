@@ -12,7 +12,7 @@ export default defineConfig({
     data: {
       dir: "dist/data",
       sources: {
-        trebiredLogo: brandLogoSource({ dir: "brand", kind: "minimal", org: "Trebired", repo: "meta", tone: "dark" }),
+        trebiredLogo: brandLogoSource({ dir: "brand", kind: "minimal", org: "Trebired", repo: "meta", tone: "light" }),
       },
     },
     frontend: {

@@ -9,7 +9,7 @@ const POINTS = ["need", "gate", "comments", "layer", "linux", "after"];
 
 export function ApproachBand({ translator }: { translator: I18nTranslator }) {
   return (
-    <SectionBand archetype="statement" className="tbfm-approach" id="approach" tone="muted" weight="major">
+    <SectionBand archetype="statement" className="tbfm-approach" id="approach" weight="major">
     <div className="tbfm-approach__strip">
     <Drawing className="tbfm-approach__drawing" drawing={DRAWINGS.server} label={translator("approach.drawing")} />
     </div>

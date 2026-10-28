@@ -5,9 +5,9 @@ import { matchSupportedLanguage, type SupportedLang } from "./../runtime/i18n/la
 
 export type Lang = SupportedLang;
 
-export const LANGUAGES: { code: Lang; label: string }[] = [
-  { code: "en", label: "English" },
-  { code: "cs", label: "Čeština" },
+export const LANGUAGES: { code: Lang; flag: string; label: string }[] = [
+  { code: "en", flag: "GB", label: "English" },
+  { code: "cs", flag: "CZ", label: "Čeština" },
 ];
 
 export function getLang(): Lang {

@@ -5,7 +5,7 @@ import { useLang } from "./../../shared/lang/use";
 
 const locales = LANGUAGES.map((lang) => ({
       code: lang.code,
-      flagCountry: false as const,
+      flagCountry: lang.flag,
       label: lang.label,
       shortLabel: lang.code.toUpperCase(),
 }));

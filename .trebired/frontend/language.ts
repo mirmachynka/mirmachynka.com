@@ -3,8 +3,8 @@ import type { FrontendLanguageConfig } from "@trebired/frontend/config";
 export const language: FrontendLanguageConfig = {
   defaultLocale: "en",
   locales: [
-    { code: "cs", flagCountry: false, label: "Čeština", shortLabel: "CS" },
-    { code: "en", flagCountry: false, label: "English", shortLabel: "EN" },
+    { code: "cs", flagCountry: "CZ", label: "Čeština", shortLabel: "CS" },
+    { code: "en", flagCountry: "GB", label: "English", shortLabel: "EN" },
   ],
   strategy: "none",
   error: {

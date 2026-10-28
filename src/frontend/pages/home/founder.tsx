@@ -8,7 +8,7 @@ import { ORGANIZATION_LOGO } from "./drawings";
 
 export function FounderBand({ translator }: { translator: I18nTranslator }) {
   return (
-    <SectionBand archetype="statement" className="tbfm-founder" id="trebired" tone="inverse" weight="major">
+    <SectionBand archetype="statement" className="tbfm-founder" id="trebired" weight="major">
     <div className="tbfm-founder__layout">
     <Drawing className="tbfm-founder__logo" drawing={ORGANIZATION_LOGO} label={identity.organizationName} />
     <div className="tbfm-founder__text tbf-column tbf-gap-md">
