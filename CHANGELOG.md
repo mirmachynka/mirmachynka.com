@@ -4,6 +4,11 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.1.0
+
+- Added "Made by Trebired" at the end of the footer ("Vytvořil Trebired" in Czech), with "Trebired" linking to trebired.com in a new tab, through `@trebired/frontend` 29.4.0.
+- Fixed text link underlines looking twice as thick in the footer as in the header. The underline is at least 2px thick and 3px below the text, so links at 14px and 16px render the same, and large links still scale.
+
 ## 3.0.3
 
 - Moved the page onto `createSitePages` from `@trebired/frontend` 29.3.0, which prerenders it, hydrates it and renders the error pages, in place of the site's own content island.
