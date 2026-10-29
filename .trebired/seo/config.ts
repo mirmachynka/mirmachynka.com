@@ -5,7 +5,7 @@ import { language } from "./../frontend/language";
 const product = readProductIdentity({ startDir: import.meta.dir });
 
 export default defineConfig({
-    forVersion: "0.6.0",
+    forVersion: "0.7.0",
     defaults: {
       image: { alt: product.displayName, height: 630, type: "image/png", url: "/social-card.png", width: 1200 },
       robots: { follow: true, index: true, maxImagePreview: "large" },
