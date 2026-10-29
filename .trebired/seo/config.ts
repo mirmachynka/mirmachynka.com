@@ -17,6 +17,7 @@ export default defineConfig({
       defaultLocale: language.defaultLocale || "en",
       locales: (language.locales || []).map((locale) => locale.code),
       name: product.displayName,
+      ogLocales: Object.fromEntries((language.locales || []).map((locale) => [locale.code, `${locale.code}_${locale.flagCountry}`])),
       url: product.website,
     },
     sitemap: { changeFrequency: "monthly", priority: 1 },
