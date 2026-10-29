@@ -34,9 +34,6 @@
       "#46lz3gg724t8": [
         "../../../src/frontend/shared/chrome_roots.tsx"
       ],
-      "#4ic81dmqq3rs": [
-        "../../../src/frontend/shared/content_island.tsx"
-      ],
       "#5ckpiqy35y3y": [
         "../../frontend/containers/layout.ts"
       ],
@@ -136,6 +133,9 @@
       "#ikg0j78ydlxa": [
         "../../../src/frontend/components/chrome/header.tsx"
       ],
+      "#irxdn6qkbtcb": [
+        "../../../src/frontend/shared/pages.tsx"
+      ],
       "#j4wkstrfixdu": [
         "../../../src/frontend/pages/home/about.tsx"
       ],
@@ -175,9 +175,6 @@
       "#pg2kr353rsf3": [
         "../../../src/frontend/components/chrome/mark.tsx"
       ],
-      "#pi119hsuxcjl": [
-        "../../../src/frontend/shared/page/route.tsx"
-      ],
       "#q5h4s802pf0t": [
         "../../../src/frontend/shared/route_path.ts"
       ],
@@ -213,9 +210,6 @@
       ],
       "#wcpxk9ipgo46": [
         "../../frontend/typography.ts"
-      ],
-      "#x0l191yp53px": [
-        "../../../src/frontend/shared/page/content.tsx"
       ],
       "#x9h8q1crymn8": [
         "../../../src/frontend/pages/home/i18n/cs.ts"

@@ -15,7 +15,7 @@ import { links } from "./../../../.trebired/frontend/links";
 import { Header } from "./../components/chrome/header";
 import { SiteFooter } from "./../components/chrome/site/footer";
 import { hydrateChromeRoots } from "./../shared/chrome_roots";
-import { mountContentIsland } from "./../shared/content_island";
+import { sitePages } from "./../shared/pages";
 import { identity } from "./../shared/identity";
 import { LANG_ROUTING } from "./../shared/lang/policy";
 import { setLang } from "./../shared/lang/store";
@@ -45,7 +45,7 @@ function mountChrome() {
 }
 
 void mountChrome()
-.then(() => mountContentIsland("live_content"))
+.then(() => sitePages.mountPages("live_content"))
 .then(() => {
     bindFrontendRuntime(document, {
         reveal: { selector: REVEAL_SELECTOR },

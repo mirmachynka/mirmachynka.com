@@ -10,7 +10,7 @@ import { Header } from "./../components/chrome/header";
 import { SiteFooter } from "./../components/chrome/site/footer";
 import { identity } from "./../shared/identity";
 import { LANG_ROUTING } from "./../shared/lang/policy";
-import { PageContent, preparePageContent } from "./../shared/page/content";
+import { sitePages } from "./../shared/pages";
 import { canonicalPath, routeExists } from "./../shared/utils/routes";
 
 configureFrontendLanguage(language);
@@ -20,7 +20,7 @@ configureSiteLinks(links, { origins: { main: identity.siteOrigin }, set: "main" 
 const iconRenderer = createServerIconRenderer({});
 
 export async function renderRouteBody(path: string, locale: string): Promise<string> {
-  await preparePageContent(path);
+  await sitePages.preparePage(path);
   const localized = (node: ReactElement) => withIconServerRenderer(
     iconRenderer,
     () => renderToString(
@@ -33,7 +33,7 @@ export async function renderRouteBody(path: string, locale: string): Promise<str
   const header = localized(<Header path={path} />);
   const content = localized(
     <LiveIslandMount rootId="live_content">
-    <PageContent path={path} />
+    <sitePages.PageContent path={path} />
     </LiveIslandMount>,
   );
   const footer = localized(<SiteFooter />);

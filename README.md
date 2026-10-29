@@ -53,7 +53,7 @@ The build writes the site to `dist/`. It is a static directory; serve it with an
 
 ### Frontend-only site
 
-The site has no backend. `src/bin/frontend/build.ts` bundles the client and prerenders every document; nothing runs at request time. `src/bin/dev.ts` is local preview, not a production server. The header, the page and the footer hydrate as separate roots in the browser.
+The site has no backend. `src/bin/frontend/build.ts` bundles the client and prerenders every document; nothing runs at request time. `src/bin/dev.ts` is local preview, not a production server. The header, the page and the footer hydrate as separate roots in the browser. `src/frontend/shared/pages.tsx` hands the page to `createSitePages` from `@trebired/frontend`, which prerenders it, hydrates it and renders the error pages.
 
 ### One page, five sections
 
