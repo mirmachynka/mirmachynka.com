@@ -4,6 +4,12 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.0.3
+
+- Moved the page onto `createSitePages` from `@trebired/frontend` 29.3.0, which prerenders it, hydrates it and renders the error pages, in place of the site's own content island.
+- Fixed `og:locale` and `og:locale:alternate` naming only the language. They name its country too (`en_GB`, `cs_CZ`), through `@trebired/seo` 0.7.0.
+- Fixed the footer and accessibility dialog headings skipping levels in the page outline, through `@trebired/frontend` 29.3.0.
+
 ## 3.0.2
 
 - Changed the Trebired logo beside the Trebired story to the colour of the text instead of the logo's own black.
