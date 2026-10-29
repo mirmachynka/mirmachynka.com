@@ -11,6 +11,7 @@ export function SiteFooter() {
 
   return (
     <PackageFooter
+    credit
     softRedirect
     social={SOCIAL_LINKS}
     brand={<NameMark className="tbfm-name-mark--footer" />}
