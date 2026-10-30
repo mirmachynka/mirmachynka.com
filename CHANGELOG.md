@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.1.2
+
+- Updated `@trebired/frontend` to 29.5.1. A frame a script appends to the page while it is still loading is now removed as well, not only hidden.
+
 ## 3.1.1
 
 - Updated `@trebired/frontend` to 29.5.0. A frame the site did not declare, such as one a script adds to the page after it loads, is removed before it shows and reported in the browser console.
