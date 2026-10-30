@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.1.1
+
+- Updated `@trebired/frontend` to 29.5.0. A frame the site did not declare, such as one a script adds to the page after it loads, is removed before it shows and reported in the browser console.
+
 ## 3.1.0
 
 - Added "Made by Trebired" at the end of the footer ("Vytvořil Trebired" in Czech), with "Trebired" linking to trebired.com in a new tab, through `@trebired/frontend` 29.4.0.
