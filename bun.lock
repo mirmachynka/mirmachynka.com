@@ -7,8 +7,8 @@
       "dependencies": {
         "@fontsource/bricolage-grotesque": "^5.3.0",
         "@fontsource/ibm-plex-sans": "^5.3.0",
-        "@trebired/bundler": "^5.18.2",
-        "@trebired/frontend": "^29.5.2",
+        "@trebired/bundler": "^5.19.0",
+        "@trebired/frontend": "^29.6.0",
         "@trebired/i18n": "^0.7.3",
         "@trebired/logger": "^3.0.3",
         "@trebired/overprint": "^0.7.0",
@@ -181,13 +181,13 @@
 
     "@socket.io/component-emitter": ["@socket.io/component-emitter@3.1.2", "", {}, "sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA=="],
 
-    "@trebired/bundler": ["@trebired/bundler@5.18.2", "", { "dependencies": { "@package/i18n": "npm:@trebired/i18n@^0.7.0", "@package/logger": "npm:@trebired/logger@^3.0.0", "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.6.0", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.4", "esbuild": "^0.28.1", "sass-embedded": "^1.100.0" }, "bin": { "package-bundler": "dist/cli.js", "trebired-bundler": "dist/cli.js" } }, "sha512-Wdp75nfpMJw2J0y0ZcQ2eUlZY7UMbTYf/ti61BRPXGq7uyoL8GASzrcuUXnm4YoM9q2bjpAf0Lt2gOD7r04auA=="],
+    "@trebired/bundler": ["@trebired/bundler@5.19.0", "", { "dependencies": { "@package/i18n": "npm:@trebired/i18n@^0.7.0", "@package/logger": "npm:@trebired/logger@^3.0.0", "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.6.0", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.4", "esbuild": "^0.28.1", "sass-embedded": "^1.100.0" }, "bin": { "package-bundler": "dist/cli.js", "trebired-bundler": "dist/cli.js" } }, "sha512-am6X/95wA1ShR7ormhBV4IW8c63qpRdBZGy4AgLuPng5BeppjxeNxTO0R5FbYz6b6OWyTNv2nHnWAMJYPSYFcQ=="],
 
     "@trebired/code-discipline": ["@trebired/code-discipline@7.2.3", "", { "dependencies": { "@package/logger": "npm:@trebired/logger@^3.0.0", "@package/result": "npm:@trebired/result@^1.2.8", "@trebired/utils": "^0.9.3", "typescript": "^6.0.3" }, "bin": { "code-discipline": "dist/cli.js" } }, "sha512-ftUJ0RenZgazegd1cAmtyeYQ2Db6lLgpNa30X1gFbsODBekrF5rZXbR4jj8rXzjzYBSN+FV/i86KeaEJvSntyQ=="],
 
     "@trebired/configs": ["@trebired/configs@0.4.0", "", {}, "sha512-y4GhZMVZqip2LcGqFzvm+ebVr0smuC1cYrU8uJvPlz9Lx7Qo4CJGRr9A5G+RYamlGA/WbBXjujw7mDZALBtwjQ=="],
 
-    "@trebired/frontend": ["@trebired/frontend@29.5.2", "", { "dependencies": { "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.7.0", "@trebired/utils": "^0.9.4", "chart.js": "^4.5.1", "country-flag-icons": "^1.6.20", "cropperjs": "^1.6.2", "react-markdown": "^10.1.0", "rehype-sanitize": "^6.0.0", "remark-gfm": "^4.0.1", "remixicon": "^4.9.1", "simple-icons": "^16.28.0", "socket.io-client": "^4.8.3" }, "peerDependencies": { "@trebired/overprint": "^0.6.0", "react": ">=18", "react-dom": ">=18", "sharp": "^0.34.5" }, "optionalPeers": ["@trebired/overprint", "react", "react-dom", "sharp"] }, "sha512-TBlL3+7rBvCw+0rlGA+zRD2Yl0PDCZsPG7OiznFKFgoVvtmnAZ3fAwwOIIu6cYx3z0oHoGxTfD5OIyozur+bmg=="],
+    "@trebired/frontend": ["@trebired/frontend@29.6.0", "", { "dependencies": { "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.7.0", "@trebired/utils": "^0.9.4", "chart.js": "^4.5.1", "country-flag-icons": "^1.6.20", "cropperjs": "^1.6.2", "react-markdown": "^10.1.0", "rehype-sanitize": "^6.0.0", "remark-gfm": "^4.0.1", "remixicon": "^4.9.1", "simple-icons": "^16.28.0", "socket.io-client": "^4.8.3" }, "peerDependencies": { "@trebired/overprint": "^0.6.0", "react": ">=18", "react-dom": ">=18", "sharp": "^0.34.5" }, "optionalPeers": ["@trebired/overprint", "react", "react-dom", "sharp"] }, "sha512-eWfqtxRYzDQcSD0/XGoP0nx5UuKXuuzl/0k9EMAm1yR0q7hHX8/VVPDHgT7dcusrN3tI8/chGpX6Ydokqpx63w=="],
 
     "@trebired/grammar": ["@trebired/grammar@0.2.1", "", { "dependencies": { "@package/logger-adapter": "npm:@trebired/logger-adapter@^0.6.0", "@trebired/utils": "^0.9.4" } }, "sha512-JjAtsMcZT/5knIjSEtHsxo39e8mieGkHKuAV01qg3pjnzJcsS1P1Gf7OOYtDiK6CK9Q4d0fpxVV+JkG9sAuxOQ=="],
 
