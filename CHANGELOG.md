@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.1.6
+
+- Updated `@trebired/frontend` to 29.7.0 and `@trebired/overprint` to 0.8.0. Phones and tablets scroll without a live blur behind text, without blocks sliding in, and with page heights that no longer follow the address bar. Prints stay still on those devices.
+
 ## 3.1.5
 
 - Cached the fingerprinted font files for a year. The browser checked them with the server on every page, so each preload lost the race to its own cached copy and was reported as unused; now a repeat visit takes them from cache at once, with no warnings.
