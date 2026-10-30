@@ -4,6 +4,10 @@ All notable changes to `mirmachynka-com` will be documented here.
 
 This project follows semantic versioning once published.
 
+## 3.1.7
+
+- Moved to `@trebired/frontend` 29.8.0 and `@trebired/overprint` 0.9.0.
+
 ## 3.1.6
 
 - Updated `@trebired/frontend` to 29.7.0 and `@trebired/overprint` to 0.8.0. Phones and tablets scroll without a live blur behind text, without blocks sliding in, and with page heights that no longer follow the address bar. Prints stay still on those devices.

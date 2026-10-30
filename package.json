@@ -17,7 +17,7 @@
     "url": "git+ssh://git@github.com/mirmachynka/mirmachynka.com.git"
   },
   "name": "mirmachynka-com",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "description": "The personal site of Miroslav Machynka, founder of Trebired.",
   "type": "module",
   "private": true,
